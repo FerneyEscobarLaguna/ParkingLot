@@ -1,6 +1,14 @@
 package co.ceiba.domain;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import org.json.JSONObject;
 
 import co.ceiba.service.IParkingRegisterService;
 import co.ceiba.service.Tool;
@@ -146,8 +154,32 @@ public class Vigilant {
 		return false;
 	}
 	
-	public String consultarVehiculos() throws Exception{
-		Tool tool = new Tool();
-		return tool.convertToJSON(repositorioParqueadero.obtenerVehiculosParqueados());
+	public List<ParkingRegister> consultarVehiculos(){
+		ResultSet rs = repositorioParqueadero.obtenerVehiculosParqueados();
+		
+		List<ParkingRegister> registros = new ArrayList();
+		Vehicle vehiculoActual;
+		String placaActual;
+		String tipoVehiculo;
+		Date fechaIngreso;
+		try {
+			while (rs.next()) {
+				//tipoVehicoloActual=rs.getString(0);
+				placaActual=rs.getString(1);
+				tipoVehiculo=rs.getString(2);
+				fechaIngreso=(Date) new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(rs.getString(3).substring(0,19));
+				
+				vehiculoActual=new Vehicle(placaActual);
+				
+				registros.add(new ParkingRegister(vehiculoActual,fechaIngreso,tipoVehiculo));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return registros;
 	}
 }

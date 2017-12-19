@@ -7,6 +7,13 @@ public class Motorcycle extends Vehicle{
 		super(placa);
 		this.cilindraje = cilindraje;
 	}
+	
+	public Motorcycle(String placa) {
+		super(placa);
+	}
+	
+	public Motorcycle() {		
+	}
 
 	public int getCilindraje() {
 		return cilindraje;
