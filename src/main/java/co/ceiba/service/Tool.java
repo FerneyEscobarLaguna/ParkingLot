@@ -1,6 +1,7 @@
 package co.ceiba.service;
 
 import java.sql.ResultSet;
+import java.util.Date;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -19,7 +20,14 @@ public class Tool {
 	        }
 	        jsonArray.put(obj);
 	    }
-
 	    return jsonArray.toString();
+	}
+	
+	public static int diferenciaHoras(Date fechaIngreso,Date fechaSalida){
+		long diff = fechaSalida.getTime() - fechaIngreso.getTime();
+		long segundos = diff / 1000;
+		long minutos = segundos / 60;
+		int diferenciaHoras =(int) Math.round(minutos / 60);
+		return diferenciaHoras;
 	}
 }

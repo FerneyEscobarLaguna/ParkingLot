@@ -4,7 +4,7 @@ import co.ceiba.domain.Motorcycle;
 
 public class MotorcycleTestDataBuilder {
 	private final String PLACA = "FALS-123";
-	private final int CILINDRAJE = 600;
+	private final int CILINDRAJE = 110;
 	
 	private String placa;
 	private int cilindraje;

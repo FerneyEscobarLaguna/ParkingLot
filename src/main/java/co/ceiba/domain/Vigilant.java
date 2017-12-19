@@ -27,31 +27,59 @@ public class Vigilant {
 		String placa = vehiculo.getPlaca();
 		Date fechaIngreso = new Date();
 		
-		if(placa.substring(0, 1).equals("A") && fechaIngreso.getDay()!=0 && fechaIngreso.getDay()!=1)
+		if(!validarPlacaHabil(placa,fechaIngreso))
 			return PLACA_NO_HABIL;
 		
 		if(vehiculoParqueado(placa)){
 			return VEHICULO_PARQUEADO;
 		}
 		
+		String tipo_vehiculo=definirTipoVehiculo(vehiculo);
+		
+		if(!hayCupoParqueadero(tipo_vehiculo))
+			return PARQUEADERO_LLENO;
+		
+		if(registrarIngreso(vehiculo))		
+			return VEHICULO_INGRESADO;
+		else
+			return ERROR;
+	}
+	
+	private String definirTipoVehiculo(Vehicle vehiculo){
 		String tipo_vehiculo="";
 		if(vehiculo.getClass().equals(Car.class)){
 			tipo_vehiculo="C";
-			if(repositorioParqueadero.contarVehiculosTipo(tipo_vehiculo)>=20)
-				return PARQUEADERO_LLENO;
 		}else{
 			tipo_vehiculo="M";
-			if(repositorioParqueadero.contarVehiculosTipo(tipo_vehiculo)>=10)
-				return PARQUEADERO_LLENO;
-		}	
-		
+		}
+		return tipo_vehiculo;
+	}
+	
+	private boolean registrarIngreso(Vehicle vehiculo){
 		ParkingRegister registroParqueadero = new ParkingRegister(vehiculo);
 		try{
 			repositorioParqueadero.registrarIngreso(registroParqueadero);
+			return true;
 		}catch(Exception e){
-			return ERROR;
+			return false;
 		}
-		return VEHICULO_INGRESADO;
+	}
+	
+	private boolean hayCupoParqueadero(String tipo_vehiculo){
+		if(tipo_vehiculo.equals("C")){
+			if(repositorioParqueadero.contarVehiculosTipo(tipo_vehiculo)>=20)
+				return false;
+		}else{
+			if(repositorioParqueadero.contarVehiculosTipo(tipo_vehiculo)>=10)
+				return false;
+		}
+		return true;
+	}
+	
+	private boolean validarPlacaHabil(String placa, Date fechaIngreso){
+		if(placa.substring(0, 1).equals("A") && fechaIngreso.getDay()!=0 && fechaIngreso.getDay()!=1)
+			return false;
+		return true;
 	}
 	
 	public double registrarSalidaVehiculo(String placa){
@@ -60,20 +88,26 @@ public class Vigilant {
 		if(registroParqueadero==null)
 			return 0;
 		
-		String tipoVehiculo;
-		if(registroParqueadero.getVehiculo().getClass().equals(Car.class))
-			tipoVehiculo = "C";
-		else
-			tipoVehiculo = "M";
+		Vehicle vehiculo=registroParqueadero.getVehiculo();
+		
+		String tipoVehiculo = definirTipoVehiculo(vehiculo);
 		
 		Date fechaIngreso = registroParqueadero.getFechaIngreso();
 		Date fechaSalida = new Date();
 		
-		long diff = fechaSalida.getTime() - fechaIngreso.getTime();
-		long segundos = diff / 1000;
-		long minutos = segundos / 60;
-		int horasEnParqueadero =(int) Math.round(minutos / 60);//Diferencia en milisegundos se convierte a horas dividiendo entre mil, luego entre 60 segundos y luego entre 60 minutos
-				
+		int horasEnParqueadero = Tool.diferenciaHoras(fechaIngreso,fechaSalida);
+		
+		double valorcobrar= calcularCosto(horasEnParqueadero,tipoVehiculo,vehiculo);
+		
+		registroParqueadero.setCostoParqueadero(valorcobrar);
+		registroParqueadero.setFechaSalida(fechaSalida);
+		
+		repositorioParqueadero.registraSalida(registroParqueadero);
+		
+		return valorcobrar;
+	}
+	
+	private double calcularCosto(int horasEnParqueadero, String tipoVehiculo, Vehicle vehiculo) {
 		int diasCobrar=0;
 		int horasCobrar=0;
 		double valorcobrar=0;
@@ -96,17 +130,15 @@ public class Vigilant {
 		if(tipoVehiculo.equals("C")){
 			valorcobrar=(diasCobrar*8000) + (horasCobrar*1000);
 		}else{
-			int cilindraje = ((Motorcycle)registroParqueadero.getVehiculo()).getCilindraje();
+			int cilindraje = ((Motorcycle)vehiculo).getCilindraje();
 			valorcobrar=(diasCobrar*600) + (horasCobrar*500);
 			if(cilindraje>500)
 				valorcobrar+=2000;
 		}
-		registroParqueadero.setCostoParqueadero(valorcobrar);
-		registroParqueadero.setFechaSalida(fechaSalida);
-		repositorioParqueadero.registraSalida(registroParqueadero);
+		
 		return valorcobrar;
 	}
-	
+
 	public boolean vehiculoParqueado(String placa){
 		ParkingRegister registroParqueadero = repositorioParqueadero.obtenerVehiculoParqueadoPlaca(placa);
 		if(registroParqueadero != null)

@@ -14,6 +14,11 @@ public class ParkingRegister {
 		this.fechaIngreso = new Date();
 	}
 	
+	public ParkingRegister(Vehicle vehiculo,Date fechaIngreso){
+		this.vehiculo = vehiculo;
+		this.fechaIngreso = fechaIngreso;
+	}
+	
 	public ParkingRegister(Vehicle vehiculo, Date fechaIngreso, Date fechaSalida, double costoParqueadero) {
 		this.vehiculo = vehiculo;
 		this.fechaIngreso = fechaIngreso;

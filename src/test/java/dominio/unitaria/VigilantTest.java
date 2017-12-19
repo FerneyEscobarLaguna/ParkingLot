@@ -2,72 +2,68 @@ package dominio.unitaria;
 
 import org.junit.Test;
 
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 import co.ceiba.domain.Car;
 import co.ceiba.domain.Motorcycle;
+import co.ceiba.domain.ParkingRegister;
 import co.ceiba.domain.Vigilant;
+import co.ceiba.service.IParkingRegisterService;
 import co.ceiba.testDataBuilder.CarTestDataBuilder;
 import co.ceiba.testDataBuilder.MotorcycleTestDataBuilder;
 
 import static org.junit.Assert.*;
-//import static org.mockito.Mockito.mock;
-//import static org.mockito.Mockito.when;
 
 public class VigilantTest {
 	@Test
 	public void registrarIngresoVehiculoCarroTest(){
 		// arrange
-		/*CarTestDataBuilder carroTestDataBuilder = new CarTestDataBuilder();
+		CarTestDataBuilder carroTestDataBuilder = new CarTestDataBuilder();
 		Car carro = carroTestDataBuilder.build();
 		
-		//RepositorioRegistroParqueadero repositorioParqueadero = mock(RepositorioRegistroParqueadero.class);
-		
-		//RepositorioVehiculo repositorioVehiculo = mock(RepositorioVehiculo.class);		
-		
-		//Vigilante vigilante = new Vigilante(repositorioParqueadero,repositorioVehiculo);
-		Vigilant vigilante = new Vigilant();
+		IParkingRegisterService repositorioParqueadero = mock(IParkingRegisterService.class);
+		when(repositorioParqueadero.obtenerVehiculoParqueadoPlaca(carro.getPlaca())).thenReturn(null);
+		when(repositorioParqueadero.contarVehiculosTipo("C")).thenReturn(0);
+				
+		Vigilant vigilante = new Vigilant(repositorioParqueadero);
 		// act 
 		String mensaje = vigilante.registrarIngresoVehiculo(carro);
 		//assert
-		//assertEquals(mensaje,Vigilant.VEHICULO_INGRESADO);*/
-		assertEquals("hola","hola");
+		assertEquals(mensaje,Vigilant.VEHICULO_INGRESADO);
 	}
 	
 	@Test
 	public void registrarIngresoVehiculoMotoTest(){
-		/*// arrange
+		// arrange
 		MotorcycleTestDataBuilder motoTestDataBuilder = new MotorcycleTestDataBuilder();
 		Motorcycle moto = motoTestDataBuilder.build();
 		
-		//RepositorioRegistroParqueadero repositorioParqueadero = mock(RepositorioRegistroParqueadero.class);
+		IParkingRegisterService repositorioParqueadero = mock(IParkingRegisterService.class);
+		when(repositorioParqueadero.obtenerVehiculoParqueadoPlaca(moto.getPlaca())).thenReturn(null);
+		when(repositorioParqueadero.contarVehiculosTipo("M")).thenReturn(0);
 		
-		//RepositorioVehiculo repositorioVehiculo = mock(RepositorioVehiculo.class);		
+		Vigilant vigilante = new Vigilant(repositorioParqueadero);
 		
-		//Vigilante vigilante = new Vigilante(repositorioParqueadero,repositorioVehiculo);
-		Vigilant vigilante = new Vigilant();
 		// act 
 		String mensaje = vigilante.registrarIngresoVehiculo(moto);
 		//assert
-		//assertEquals(mensaje,Vigilant.VEHICULO_INGRESADO);*/
-		assertEquals("hola","hola");
+		assertEquals(mensaje,Vigilant.VEHICULO_INGRESADO);
 	}
 	
 	@Test
 	public void vehiculoParqueadoTest(){
 		// arrange
-		/*CarTestDataBuilder carroTestDataBuilder = new CarTestDataBuilder();
+		CarTestDataBuilder carroTestDataBuilder = new CarTestDataBuilder();
 		Car carro = carroTestDataBuilder.build();
 		
-		//RepositorioRegistroParqueadero repositorioParqueadero = mock(RepositorioRegistroParqueadero.class);
-		//when(repositorioParqueadero.obtenerVehiculoParqueadoPlaca(carro.getPlaca())).thenReturn(carro);
+		IParkingRegisterService repositorioParqueadero = mock(IParkingRegisterService.class);
+		when(repositorioParqueadero.obtenerVehiculoParqueadoPlaca(carro.getPlaca())).thenReturn(new ParkingRegister(carro));	
 		
-		//RepositorioVehiculo repositorioVehiculo = mock(RepositorioVehiculo.class);		
-		
-		//Vigilante vigilante = new Vigilante(repositorioParqueadero,repositorioVehiculo);
-		Vigilant vigilante = new Vigilant();
+		Vigilant vigilante = new Vigilant(repositorioParqueadero);
 		// act 
-		boolean estaParqueado = vigilante.vehiculoParqueado(carro.getPlaca());*/
+		boolean estaParqueado = vigilante.vehiculoParqueado(carro.getPlaca());
 		//assert
-		//assertTrue(estaParqueado);
-		assertEquals("hola","hola");
+		assertTrue(estaParqueado);
 	}
 }
