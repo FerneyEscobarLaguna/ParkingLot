@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="dominio.unitaria.MotorcycleTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2017-12-20T20:44:05" hostname="FERNEY-ESCOBAR" time="0.0">
+<testsuite name="dominio.unitaria.MotorcycleTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2017-12-20T21:56:52" hostname="FERNEY-ESCOBAR" time="0.015">
   <properties/>
   <testcase name="crearMotoTest" classname="dominio.unitaria.MotorcycleTest" time="0.0"/>
+  <testcase name="crearMotoTestPlaca" classname="dominio.unitaria.MotorcycleTest" time="0.0"/>
+  <testcase name="crearMotoTestVacio" classname="dominio.unitaria.MotorcycleTest" time="0.0"/>
   <testcase name="modificarMotoTest" classname="dominio.unitaria.MotorcycleTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
