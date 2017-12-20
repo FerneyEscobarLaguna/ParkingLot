@@ -24,6 +24,20 @@ public class CarTest {
 	}
 	
 	@Test
+	public void crearCarroVacioTest() {
+		
+		// arrange
+		String placaNueva = "PLANU-123";
+
+		// act
+		Car car = new Car();
+		car.setPlaca(placaNueva);
+
+		// assert
+		assertEquals(PLACA, car.getPlaca());
+	}
+	
+	@Test
 	public void modificarCarroTest() {
 		
 		// arrange

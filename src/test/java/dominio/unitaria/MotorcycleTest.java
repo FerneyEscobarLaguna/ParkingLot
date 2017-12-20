@@ -28,6 +28,29 @@ public class MotorcycleTest {
 	}
 	
 	@Test
+	public void crearMotoTestPlaca() {		
+		// arrange
+
+		// act
+		Motorcycle motorcycle = new Motorcycle(PLACA);
+
+		// assert
+		assertEquals(PLACA, motorcycle.getPlaca());
+	}
+	
+	@Test
+	public void crearMotoTestVacio() {		
+		// arrange
+
+		// act
+		Motorcycle motorcycle = new Motorcycle();
+		motorcycle.setPlaca(PLACA);
+
+		// assert
+		assertEquals(PLACA, motorcycle.getPlaca());
+	}
+	
+	@Test
 	public void modificarMotoTest() {
 		
 		// arrange

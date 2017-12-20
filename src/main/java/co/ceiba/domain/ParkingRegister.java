@@ -43,17 +43,8 @@ public class ParkingRegister {
 		this.vehiculo = vehiculo;
 		this.fechaIngreso = fechaIngreso;
 		this.tipoVehiculo = tipoVehiculo;
-		this.tipoVehiculo = vehiculo.getClass().equals(Car.class)?"C":"M";
 		this.registroVehiculoId = registroVehiculoId;
 	}	
-	
-	public String getTipoVehiculo() {
-		return tipoVehiculo;
-	}
-
-	public void setTipoVehiculo(String tipoVehiculo) {
-		this.tipoVehiculo = tipoVehiculo;
-	}
 
 	public ParkingRegister(Vehicle vehiculo, Date fechaIngreso, Date fechaSalida, double costoParqueadero) {
 		this.vehiculo = vehiculo;
@@ -68,6 +59,14 @@ public class ParkingRegister {
 		this.fechaSalida = fechaSalida;
 		this.costoParqueadero = costoParqueadero;
 		this.registroVehiculoId = registroVehiculoId;
+	}
+	
+	public String getTipoVehiculo() {
+		return tipoVehiculo;
+	}
+
+	public void setTipoVehiculo(String tipoVehiculo) {
+		this.tipoVehiculo = tipoVehiculo;
 	}
 	
 	public Vehicle getVehiculo() {

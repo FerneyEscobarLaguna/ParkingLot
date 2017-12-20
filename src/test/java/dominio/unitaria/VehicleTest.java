@@ -19,6 +19,16 @@ public class VehicleTest {
 	}
 	
 	@Test
+	public void crearVehiculoTestVacio() {		
+		// act
+		Vehicle vehicle = new Vehicle();
+		vehicle.setPlaca(PLACA);
+
+		// assert
+		assertEquals(PLACA, vehicle.getPlaca());
+	}
+	
+	@Test
 	public void modificarVehiculoTest() {		
 		// arrange
 		String placaTemporal = "TEMPO-123";
