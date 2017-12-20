@@ -26,6 +26,6 @@ public class ParkingRegisterTest {
 		//assert
 		assertEquals(registroParqueadero.getFechaIngreso(),FECHAINGRESO);
 		assertEquals(registroParqueadero.getFechaSalida(),FECHASALIDA);
-		assertEquals(registroParqueadero.getCostoParqueadero(),COSTOPARQUEADERO,0);
+		assertEquals(0,registroParqueadero.getCostoParqueadero(),COSTOPARQUEADERO);
 	}
 }

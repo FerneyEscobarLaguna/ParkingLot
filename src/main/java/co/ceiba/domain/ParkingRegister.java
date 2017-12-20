@@ -4,44 +4,44 @@ import java.util.Date;
 
 public class ParkingRegister {
 	private Vehicle vehiculo;
-	private String tipo_vehiculo;
+	private String tipoVehiculo;
 	private Date fechaIngreso;
 	private Date fechaSalida;
 	private double costoParqueadero;
-	private int registro_vehiculo_id;
+	private int registroVehiculoId;
 	
 	public ParkingRegister(Vehicle vehiculo){
 		this.vehiculo = vehiculo;
 		this.fechaIngreso = new Date();
-		this.tipo_vehiculo = vehiculo.getClass().equals(Car.class)?"C":"M";
+		this.tipoVehiculo = vehiculo.getClass().equals(Car.class)?"C":"M";
 	}
 	
 	public ParkingRegister(Vehicle vehiculo,Date fechaIngreso){
 		this.vehiculo = vehiculo;
 		this.fechaIngreso = fechaIngreso;
-		this.tipo_vehiculo = vehiculo.getClass().equals(Car.class)?"C":"M";
+		this.tipoVehiculo = vehiculo.getClass().equals(Car.class)?"C":"M";
 	}	
 	
-	public ParkingRegister(Vehicle vehiculo,Date fechaIngreso,String tipo_vehiculo){
+	public ParkingRegister(Vehicle vehiculo,Date fechaIngreso,String tipoVehiculo){
 		this.vehiculo = vehiculo;
 		this.fechaIngreso = fechaIngreso;
-		this.tipo_vehiculo = tipo_vehiculo;
+		this.tipoVehiculo = tipoVehiculo;
 	}	
 	
-	public ParkingRegister(Vehicle vehiculo,Date fechaIngreso,String tipo_vehiculo,int registro_vehiculo_id){
+	public ParkingRegister(Vehicle vehiculo,Date fechaIngreso,String tipoVehiculo,int registroVehiculoId){
 		this.vehiculo = vehiculo;
 		this.fechaIngreso = fechaIngreso;
-		this.tipo_vehiculo = tipo_vehiculo;
-		this.tipo_vehiculo = vehiculo.getClass().equals(Car.class)?"C":"M";
-		this.registro_vehiculo_id = registro_vehiculo_id;
+		this.tipoVehiculo = tipoVehiculo;
+		this.tipoVehiculo = vehiculo.getClass().equals(Car.class)?"C":"M";
+		this.registroVehiculoId = registroVehiculoId;
 	}	
 	
-	public String getTipo_vehiculo() {
-		return tipo_vehiculo;
+	public String getTipoVehiculo() {
+		return tipoVehiculo;
 	}
 
-	public void setTipo_vehiculo(String tipo_vehiculo) {
-		this.tipo_vehiculo = tipo_vehiculo;
+	public void setTipoVehiculo(String tipoVehiculo) {
+		this.tipoVehiculo = tipoVehiculo;
 	}
 
 	public ParkingRegister(Vehicle vehiculo, Date fechaIngreso, Date fechaSalida, double costoParqueadero) {
@@ -51,12 +51,12 @@ public class ParkingRegister {
 		this.costoParqueadero = costoParqueadero;
 	}
 	
-	public ParkingRegister(int registro_vehiculo_id,Vehicle vehiculo, Date fechaIngreso, Date fechaSalida, double costoParqueadero) {
+	public ParkingRegister(int registroVehiculoId,Vehicle vehiculo, Date fechaIngreso, Date fechaSalida, double costoParqueadero) {
 		this.vehiculo = vehiculo;
 		this.fechaIngreso = fechaIngreso;
 		this.fechaSalida = fechaSalida;
 		this.costoParqueadero = costoParqueadero;
-		this.registro_vehiculo_id = registro_vehiculo_id;
+		this.registroVehiculoId = registroVehiculoId;
 	}
 	
 	public Vehicle getVehiculo() {
@@ -84,12 +84,12 @@ public class ParkingRegister {
 		this.costoParqueadero = costoParqueadero;
 	}
 
-	public int getRegistro_vehiculo_id() {
-		return registro_vehiculo_id;
+	public int getRegistroVehiculoId() {
+		return registroVehiculoId;
 	}
 
-	public void setRegistro_vehiculo_id(int registro_vehiculo_id) {
-		this.registro_vehiculo_id = registro_vehiculo_id;
+	public void setRegistroVehiculoId(int registroVehiculoId) {
+		this.registroVehiculoId = registroVehiculoId;
 	}	
 	
 }

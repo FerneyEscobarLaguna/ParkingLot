@@ -1,25 +1,38 @@
 package co.ceiba.service;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
+import java.util.logging.Logger;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import co.ceiba.conection.Conection;
+
 public class Tool {
-	public String convertToJSON(ResultSet resultSet)
-	        throws Exception {
+	
+	private static final Logger LOGGER = Logger.getLogger( Conection.class.getName() );
+	
+	public String convertToJSON(ResultSet resultSet){
 	    JSONArray jsonArray = new JSONArray();
 
-	    while (resultSet.next()) {
-	        int total_columns = resultSet.getMetaData().getColumnCount();
-	        JSONObject obj = new JSONObject();
-	        for (int i = 0; i < total_columns; i++) {
-	            obj.put(resultSet.getMetaData().getColumnLabel(i+1)
-	                    .toLowerCase(), resultSet.getObject(i + 1));
-	        }
-	        jsonArray.put(obj);
-	    }
+	    try {
+			while (resultSet.next()) {
+			    int totalColumns = resultSet.getMetaData().getColumnCount();
+			    JSONObject obj = new JSONObject();
+			    for (int i = 0; i < totalColumns; i++) {
+			        obj.put(resultSet.getMetaData().getColumnLabel(i+1)
+			                .toLowerCase(), resultSet.getObject(i + 1));
+			    }
+			    jsonArray.put(obj);
+			}
+		} catch (JSONException e) {
+			LOGGER.log(LOGGER.getLevel(), e.toString());
+		} catch (SQLException e) {
+			LOGGER.log(LOGGER.getLevel(), e.toString());
+		}
 	    return jsonArray.toString();
 	}
 	
@@ -27,7 +40,6 @@ public class Tool {
 		long diff = fechaSalida.getTime() - fechaIngreso.getTime();
 		long segundos = diff / 1000;
 		long minutos = segundos / 60;
-		int diferenciaHoras =(int) Math.round(minutos / 60);
-		return diferenciaHoras;
+		return Math.round(minutos / 60f);		
 	}
 }

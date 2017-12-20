@@ -26,5 +26,6 @@
 	<classpathentry kind="lib" path="C:/Users/ferney.escobar/Downloads/java-json.jar"/>
 	<classpathentry kind="lib" path="C:/Users/ferney.escobar/Downloads/mockito-all-1.10.19.jar"/>
 	<classpathentry kind="lib" path="C:/Users/ferney.escobar/Downloads/sqljdbc4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ferney.escobar/Downloads/hibernate-validator-4.3.1.final-1.0.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

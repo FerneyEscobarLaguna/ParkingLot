@@ -3,39 +3,56 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Logger;
 public class Conection {
 	private java.sql.Connection con;
+	private static final Logger LOGGER = Logger.getLogger( Conection.class.getName() );
 	
 	public Conection(){	
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 		} catch (ClassNotFoundException e1) {
-			e1.printStackTrace();
+			LOGGER.log(LOGGER.getLevel(), e1.toString());
 		}
 		try{
-			con = (java.sql.Connection) DriverManager.getConnection("jdbc:sqlserver://mssql3.gear.host","parqueaderoceiba","Do4sjHrB!Dd~");
+			con = DriverManager.getConnection("jdbc:sqlserver://mssql3.gear.host","parqueaderoceiba","Do4sjHrB!Dd~");
 		}catch(SQLException e){
-			e.printStackTrace();
+			LOGGER.log(LOGGER.getLevel(), e.toString());
 		}
 	}
 	
 	public ResultSet executeQuery(String query){
+		PreparedStatement pst = null;
 		try{
-			PreparedStatement pst = con.prepareStatement(query);
-			ResultSet rs = pst.executeQuery();
-			return rs;
+			pst = con.prepareStatement(query);
+			return pst.executeQuery();
 		}catch(SQLException e){
-			e.printStackTrace();
+			LOGGER.log(LOGGER.getLevel(), e.toString());
+		}finally{
+			try {
+				if(pst!=null)
+					pst.close();
+			} catch (SQLException e) {
+				LOGGER.log(LOGGER.getLevel(), e.toString());
+			}
 		}
 		return null;
 	}
 	
 	public void executeUpdate(String update){
+		PreparedStatement pst = null;	
 		try{
-			PreparedStatement pst = con.prepareStatement(update);
+			pst = con.prepareStatement(update);
 			pst.executeUpdate();
 		}catch(SQLException e){
-			e.printStackTrace();
+			LOGGER.log(LOGGER.getLevel(), e.toString());
+		} finally{
+			try {
+				if(pst!=null)
+					pst.close();
+			} catch (SQLException e) {
+				LOGGER.log(LOGGER.getLevel(), e.toString());
+			}
 		}
 	}
 	
@@ -43,7 +60,7 @@ public class Conection {
 		try {
 			con.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.log(LOGGER.getLevel(), e.toString());
 		}
 	}
 }

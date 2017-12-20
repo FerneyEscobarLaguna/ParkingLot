@@ -3,7 +3,6 @@ package co.ceiba.service;
 import java.sql.ResultSet;
 
 import co.ceiba.domain.ParkingRegister;
-import co.ceiba.domain.Vehicle;
 
 public interface IParkingRegisterService {
 	/**

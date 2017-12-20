@@ -5,11 +5,12 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Logger;
 
-import org.json.JSONObject;
-
+import co.ceiba.conection.Conection;
 import co.ceiba.service.IParkingRegisterService;
 import co.ceiba.service.Tool;
 import persistencia.repositorio.ParkingRegisterService;
@@ -20,6 +21,7 @@ public class Vigilant {
 	public static final String PARQUEADERO_LLENO = "No hay lugares disponibles para el vehiculo";
 	public static final String VEHICULO_PARQUEADO = "El vehiculo ya se encuentra en el parqueadero";
 	public static final String ERROR = "Ha ocurrido un error durante el registro del vehiculo, intente de nuevo";
+	private static final Logger LOGGER = Logger.getLogger( Conection.class.getName() );
 	
 	private IParkingRegisterService repositorioParqueadero;
 	
@@ -42,9 +44,9 @@ public class Vigilant {
 			return VEHICULO_PARQUEADO;
 		}
 		
-		String tipo_vehiculo=definirTipoVehiculo(vehiculo);
+		String tipoVehiculo=definirTipoVehiculo(vehiculo);
 		
-		if(!hayCupoParqueadero(tipo_vehiculo))
+		if(!hayCupoParqueadero(tipoVehiculo))
 			return PARQUEADERO_LLENO;
 		
 		if(registrarIngreso(vehiculo))		
@@ -54,13 +56,13 @@ public class Vigilant {
 	}
 	
 	private String definirTipoVehiculo(Vehicle vehiculo){
-		String tipo_vehiculo="";
+		String tipoVehiculo="";
 		if(vehiculo.getClass().equals(Car.class)){
-			tipo_vehiculo="C";
+			tipoVehiculo="C";
 		}else{
-			tipo_vehiculo="M";
+			tipoVehiculo="M";
 		}
-		return tipo_vehiculo;
+		return tipoVehiculo;
 	}
 	
 	private boolean registrarIngreso(Vehicle vehiculo){
@@ -73,21 +75,22 @@ public class Vigilant {
 		}
 	}
 	
-	private boolean hayCupoParqueadero(String tipo_vehiculo){
-		if(tipo_vehiculo.equals("C")){
-			if(repositorioParqueadero.contarVehiculosTipo(tipo_vehiculo)>=20)
+	private boolean hayCupoParqueadero(String tipoVehiculo){
+		if(tipoVehiculo.equals("C")){
+			if(repositorioParqueadero.contarVehiculosTipo(tipoVehiculo)>=20)
 				return false;
 		}else{
-			if(repositorioParqueadero.contarVehiculosTipo(tipo_vehiculo)>=10)
+			if(repositorioParqueadero.contarVehiculosTipo(tipoVehiculo)>=10)
 				return false;
 		}
 		return true;
 	}
 	
 	private boolean validarPlacaHabil(String placa, Date fechaIngreso){
-		if(placa.substring(0, 1).equals("A") && fechaIngreso.getDay()!=0 && fechaIngreso.getDay()!=1)
-			return false;
-		return true;
+		Calendar ca = Calendar.getInstance();
+		ca.setTime(fechaIngreso);
+		int day = ca.get(Calendar.DAY_OF_WEEK);
+		return placa.substring(0, 1).equals("A") && day!=0 && day!=1?false:true;
 	}
 	
 	public double registrarSalidaVehiculo(String placa){
@@ -136,10 +139,10 @@ public class Vigilant {
 		}
 		
 		if(tipoVehiculo.equals("C")){
-			valorcobrar=(diasCobrar*8000) + (horasCobrar*1000);
+			valorcobrar=(diasCobrar*8000d) + (horasCobrar*1000d);
 		}else{
 			int cilindraje = ((Motorcycle)vehiculo).getCilindraje();
-			valorcobrar=(diasCobrar*600) + (horasCobrar*500);
+			valorcobrar=(diasCobrar*600d) + (horasCobrar*500d);
 			if(cilindraje>500)
 				valorcobrar+=2000;
 		}
@@ -149,9 +152,7 @@ public class Vigilant {
 
 	public boolean vehiculoParqueado(String placa){
 		ParkingRegister registroParqueadero = repositorioParqueadero.obtenerVehiculoParqueadoPlaca(placa);
-		if(registroParqueadero != null)
-			return true;
-		return false;
+		return registroParqueadero !=null?true:false;
 	}
 	
 	public List<ParkingRegister> consultarVehiculos(){
@@ -164,21 +165,18 @@ public class Vigilant {
 		Date fechaIngreso;
 		try {
 			while (rs.next()) {
-				//tipoVehicoloActual=rs.getString(0);
 				placaActual=rs.getString(1);
 				tipoVehiculo=rs.getString(2);
-				fechaIngreso=(Date) new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(rs.getString(3).substring(0,19));
+				fechaIngreso=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(rs.getString(3).substring(0,19));
 				
 				vehiculoActual=new Vehicle(placaActual);
 				
 				registros.add(new ParkingRegister(vehiculoActual,fechaIngreso,tipoVehiculo));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOGGER.log(LOGGER.getLevel(), e.toString());
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOGGER.log(LOGGER.getLevel(), e.toString());
 		}
 		return registros;
 	}

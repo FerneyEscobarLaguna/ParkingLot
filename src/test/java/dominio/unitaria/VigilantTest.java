@@ -30,7 +30,7 @@ public class VigilantTest {
 		// act 
 		String mensaje = vigilante.registrarIngresoVehiculo(carro);
 		//assert
-		assertEquals(mensaje,Vigilant.VEHICULO_INGRESADO);
+		assertEquals(Vigilant.VEHICULO_INGRESADO,mensaje);
 	}
 	
 	@Test
@@ -48,7 +48,7 @@ public class VigilantTest {
 		// act 
 		String mensaje = vigilante.registrarIngresoVehiculo(moto);
 		//assert
-		assertEquals(mensaje,Vigilant.VEHICULO_INGRESADO);
+		assertEquals(Vigilant.VEHICULO_INGRESADO,mensaje);
 	}
 	
 	@Test
