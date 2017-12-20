@@ -2,6 +2,7 @@ package com.rest;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,8 +24,12 @@ public class VigilantServices {
 	
 	@RequestMapping(value = "/registrarIngreso", method=RequestMethod.POST)
 	public String registrarVehiculo(@RequestBody Vehicle vehiculo) {
-		String respuesta=new Vigilant().registrarIngresoVehiculo(vehiculo);
-		System.out.println(respuesta);
+		String respuesta="[{\"res\":\""+new Vigilant().registrarIngresoVehiculo(vehiculo)+"\"}]";
 		return respuesta;
+	}
+	
+	@RequestMapping(value = "/registrarSalida", method=RequestMethod.POST)
+	public Double registrarSalida(@RequestBody Vehicle vehiculo){
+		return new Vigilant().registrarSalidaVehiculo(vehiculo.getPlaca());
 	}
 }
