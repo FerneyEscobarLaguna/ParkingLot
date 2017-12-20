@@ -37,6 +37,7 @@ public class ParkingRegisterService implements IParkingRegisterService{
 				Date fechaIngreso=null;
 				fechaIngreso = new SimpleDateFormat(DATEFORMAT).parse(rs.getObject(3).toString());
 				int registroVehiculoId = Integer.parseInt(rs.getObject(4).toString());
+				con.close();
 				return new ParkingRegister(registroVehiculoId,vehiculo,fechaIngreso,null,0);
 			}
 		} catch (SQLException e) {
@@ -62,7 +63,6 @@ public class ParkingRegisterService implements IParkingRegisterService{
 					"VALUES('" + placa + "','"+tipoVehiculo+"','"+fechaIngreso+"')";
 		Conection con= new Conection();
 		con.executeUpdate(insert);
-		con.close();
 	}
 	
 	public void registraSalida(ParkingRegister registroParqueadero) {
@@ -73,7 +73,6 @@ public class ParkingRegisterService implements IParkingRegisterService{
 		Conection con= new Conection();
 		String update = "UPDATE REGISTRO_PARQUEADERO SET COSTO_PARQUEADERO="+costo+", FECHA_SALIDA='"+fechaSalida+"' WHERE REGISTRO_PARQUEADERO_ID="+registroVehiculoId;
 		con.executeUpdate(update);
-		con.close();
 	}
 
 	public ResultSet obtenerVehiculosParqueados() {

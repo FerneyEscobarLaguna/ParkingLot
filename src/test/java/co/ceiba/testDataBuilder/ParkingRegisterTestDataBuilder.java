@@ -10,17 +10,23 @@ public class ParkingRegisterTestDataBuilder {
 	private final Date FECHAINGRESO = new Date();
 	private final Date FECHASALIDA = new Date();
 	private final double COSTOPARQUEADERO = 0;
+	private final int REGISTROVEHICULOID = 0;
+	private final String TIPOVEHICULO = "C"; 
 
 	private Vehicle vehiculo;
 	private Date fechaIngreso;
 	private Date fechaSalida;
 	private double costoParqueadero;
+	private int registroVehiculoid;
+	private String tipoVechiculo;
 	
 	public ParkingRegisterTestDataBuilder(){
 		this.vehiculo=VEHICULO;
 		this.fechaIngreso=FECHAINGRESO;
 		this.fechaSalida = FECHASALIDA;
 		this.costoParqueadero = COSTOPARQUEADERO;
+		this.registroVehiculoid = REGISTROVEHICULOID;
+		this.tipoVechiculo = TIPOVEHICULO;
 	}
 	
 	public ParkingRegisterTestDataBuilder conVehiculo(Vehicle vehiculo){
@@ -43,7 +49,17 @@ public class ParkingRegisterTestDataBuilder {
 		return this;
 	}
 	
+	public ParkingRegisterTestDataBuilder conRegistroVehiculoId(int registroVehiculoId){
+		this.registroVehiculoid = registroVehiculoId;
+		return this;
+	}
+	
+	public ParkingRegisterTestDataBuilder conTipoVehiculo(String tipoVehiculo){
+		this.tipoVechiculo = tipoVehiculo;
+		return this;
+	}
+	
 	public ParkingRegister build(){
-		return new ParkingRegister(this.vehiculo,this.fechaIngreso,this.fechaSalida,this.costoParqueadero);
+		return new ParkingRegister(this.vehiculo,this.tipoVechiculo,this.fechaIngreso,this.fechaSalida,this.costoParqueadero,this.registroVehiculoid);
 	}
 }

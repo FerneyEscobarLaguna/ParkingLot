@@ -25,16 +25,10 @@ public class Conection {
 		PreparedStatement pst = null;
 		try{
 			pst = con.prepareStatement(query);
-			return pst.executeQuery();
+			pst.executeQuery();
+			return pst.getResultSet();
 		}catch(SQLException e){
 			LOGGER.log(LOGGER.getLevel(), e.toString());
-		}finally{
-			try {
-				if(pst!=null)
-					pst.close();
-			} catch (SQLException e) {
-				LOGGER.log(LOGGER.getLevel(), e.toString());
-			}
 		}
 		return null;
 	}

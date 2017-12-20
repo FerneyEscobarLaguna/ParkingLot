@@ -8,8 +8,19 @@ public class ParkingRegister {
 	private Date fechaIngreso;
 	private Date fechaSalida;
 	private double costoParqueadero;
-	private int registroVehiculoId;
+	private int registroVehiculoId;	
 	
+	public ParkingRegister(Vehicle vehiculo, String tipoVehiculo, Date fechaIngreso, Date fechaSalida,
+			double costoParqueadero, int registroVehiculoId) {
+		super();
+		this.vehiculo = vehiculo;
+		this.tipoVehiculo = tipoVehiculo;
+		this.fechaIngreso = fechaIngreso;
+		this.fechaSalida = fechaSalida;
+		this.costoParqueadero = costoParqueadero;
+		this.registroVehiculoId = registroVehiculoId;
+	}
+
 	public ParkingRegister(Vehicle vehiculo){
 		this.vehiculo = vehiculo;
 		this.fechaIngreso = new Date();
