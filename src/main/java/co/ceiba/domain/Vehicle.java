@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo.*;
     @JsonSubTypes.Type(value = Motorcycle.class, name = "motorcycle"),
     @JsonSubTypes.Type(value = Car.class, name = "car"),
     @JsonSubTypes.Type(value = Vehicle.class, name = "Vehicle")
-})
+})//Se agrega propiedad type para identificar la clase de objeto enviada por json
 
 public class Vehicle {
 	private String placa;
