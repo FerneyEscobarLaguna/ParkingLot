@@ -33,13 +33,11 @@ public class Conection {
 		return null;
 	}
 	
-	public void executeUpdate(String update){
+	public void executeUpdate(String update) throws SQLException{
 		PreparedStatement pst = null;	
 		try{
 			pst = con.prepareStatement(update);
 			pst.executeUpdate();
-		}catch(SQLException e){
-			LOGGER.log(LOGGER.getLevel(), e.toString());
 		} finally{
 			try {
 				if(pst!=null)

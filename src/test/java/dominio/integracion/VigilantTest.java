@@ -7,7 +7,10 @@ import static org.mockito.Mockito.when;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.junit.Test;
+import org.mockito.Mockito;
+import org.mockito.internal.matchers.Any;
 
 import co.ceiba.domain.Car;
 import co.ceiba.domain.Motorcycle;
@@ -48,6 +51,40 @@ public class VigilantTest {
 		String mensaje = vigilante.registrarIngresoVehiculo(carro);
 		//assert
 		assertEquals(Vigilant.PARQUEADERO_LLENO,mensaje);
+	}
+	
+	@Test
+	public void registrarIngresoVehiculoParqueadoTest(){
+		// arrange
+		CarTestDataBuilder carroTestDataBuilder = new CarTestDataBuilder();
+		Car carro = carroTestDataBuilder.conPlaca("SIMU-123").build();
+
+		IParkingRegisterService repositorioParqueadero = mock(IParkingRegisterService.class);
+		when(repositorioParqueadero.obtenerVehiculoParqueadoPlaca(carro.getPlaca())).thenReturn(new ParkingRegister(carro));
+		
+		Vigilant vigilante = new Vigilant(repositorioParqueadero);
+		// act 
+		String mensaje = vigilante.registrarIngresoVehiculo(carro);
+		//assert
+		assertEquals(Vigilant.VEHICULO_PARQUEADO,mensaje);
+	}
+	
+	@Test
+	public void registrarIngresoVehiculoErrorTest(){
+		// arrange
+		CarTestDataBuilder carroTestDataBuilder = new CarTestDataBuilder();
+		Car carro = carroTestDataBuilder.conPlaca("SIMU-123").build();
+
+		IParkingRegisterService repositorioParqueadero = mock(IParkingRegisterService.class);
+		when(repositorioParqueadero.registrarIngreso(new ParkingRegister(carro))).thenReturn(false);
+		when(repositorioParqueadero.contarVehiculosTipo("C")).thenReturn(0);
+		when(repositorioParqueadero.obtenerVehiculoParqueadoPlaca(carro.getPlaca())).thenReturn(null);
+		
+		Vigilant vigilante = new Vigilant(repositorioParqueadero);
+		// act 
+		String mensaje = vigilante.registrarIngresoVehiculo(carro);
+		//assert
+		assertEquals(Vigilant.ERROR,mensaje);
 	}
 	
 	@Test
@@ -101,6 +138,46 @@ public class VigilantTest {
 		double costo = vigilante.registrarSalidaVehiculo(carro.getPlaca());
 		//Assert
 		assertEquals(0,11000,costo);
+	}
+	
+	@Test
+	public void registrarSalidaCarroDiaTest(){
+		//Arrange
+		CarTestDataBuilder carroTestDataBuilder = new CarTestDataBuilder();
+		Car carro = carroTestDataBuilder.build();
+		
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(new Date());
+		calendar.add(Calendar.HOUR, -10);
+		Date fechaIngreso = calendar.getTime();//Se crea la fecha de ingreso esperada
+		
+		IParkingRegisterService repositorioParqueadero = mock(IParkingRegisterService.class);
+		when(repositorioParqueadero.obtenerVehiculoParqueadoPlaca(carro.getPlaca())).thenReturn(new ParkingRegister(carro,fechaIngreso));
+		Vigilant vigilante = new Vigilant(repositorioParqueadero);
+		//Act
+		double costo = vigilante.registrarSalidaVehiculo(carro.getPlaca());
+		//Assert
+		assertEquals(0,8000,costo);
+	}
+	
+	@Test
+	public void registrarSalidaCarroMinutosTest(){
+		//Arrange
+		CarTestDataBuilder carroTestDataBuilder = new CarTestDataBuilder();
+		Car carro = carroTestDataBuilder.build();
+		
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(new Date());
+		calendar.add(Calendar.MINUTE, -30);
+		Date fechaIngreso = calendar.getTime();//Se crea la fecha de ingreso esperada
+		
+		IParkingRegisterService repositorioParqueadero = mock(IParkingRegisterService.class);
+		when(repositorioParqueadero.obtenerVehiculoParqueadoPlaca(carro.getPlaca())).thenReturn(new ParkingRegister(carro,fechaIngreso));
+		Vigilant vigilante = new Vigilant(repositorioParqueadero);
+		//Act
+		double costo = vigilante.registrarSalidaVehiculo(carro.getPlaca());
+		//Assert
+		assertEquals(0,500,costo);
 	}
 	
 	@Test
@@ -161,5 +238,25 @@ public class VigilantTest {
 		double costo = vigilante.registrarSalidaVehiculo(moto.getPlaca());
 		//Assert
 		assertEquals(0,4100,costo);
+	}
+	
+	@Test
+	public void registrarSalidaCarroNoParqueadoTest(){
+		//Arrange
+		CarTestDataBuilder carroTestDataBuilder = new CarTestDataBuilder();
+		Car carro = carroTestDataBuilder.build();
+		
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(new Date());
+		calendar.add(Calendar.HOUR, -27);
+		Date fechaIngreso = calendar.getTime();//Se crea la fecha de ingreso esperada
+		
+		IParkingRegisterService repositorioParqueadero = mock(IParkingRegisterService.class);
+		when(repositorioParqueadero.obtenerVehiculoParqueadoPlaca(carro.getPlaca())).thenReturn(null);
+		Vigilant vigilante = new Vigilant(repositorioParqueadero);
+		//Act
+		double costo = vigilante.registrarSalidaVehiculo(carro.getPlaca());
+		//Assert
+		assertEquals(0,0,costo);
 	}
 }

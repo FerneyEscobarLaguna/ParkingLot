@@ -1,6 +1,7 @@
 package dominio.unitaria;
 
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -25,6 +26,7 @@ public class VigilantTest {
 		IParkingRegisterService repositorioParqueadero = mock(IParkingRegisterService.class);
 		when(repositorioParqueadero.obtenerVehiculoParqueadoPlaca(carro.getPlaca())).thenReturn(null);
 		when(repositorioParqueadero.contarVehiculosTipo("C")).thenReturn(0);
+		when(repositorioParqueadero.registrarIngreso(Mockito.any(ParkingRegister.class))).thenReturn(true);
 				
 		Vigilant vigilante = new Vigilant(repositorioParqueadero);
 		// act 
@@ -42,6 +44,7 @@ public class VigilantTest {
 		IParkingRegisterService repositorioParqueadero = mock(IParkingRegisterService.class);
 		when(repositorioParqueadero.obtenerVehiculoParqueadoPlaca(moto.getPlaca())).thenReturn(null);
 		when(repositorioParqueadero.contarVehiculosTipo("M")).thenReturn(0);
+		when(repositorioParqueadero.registrarIngreso(Mockito.any(ParkingRegister.class))).thenReturn(true);
 		
 		Vigilant vigilante = new Vigilant(repositorioParqueadero);
 		

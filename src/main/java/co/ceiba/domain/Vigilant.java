@@ -67,12 +67,7 @@ public class Vigilant {
 	
 	private boolean registrarIngreso(Vehicle vehiculo){
 		ParkingRegister registroParqueadero = new ParkingRegister(vehiculo);
-		try{
-			repositorioParqueadero.registrarIngreso(registroParqueadero);
-			return true;
-		}catch(Exception e){
-			return false;
-		}
+		return repositorioParqueadero.registrarIngreso(registroParqueadero);
 	}
 	
 	private boolean hayCupoParqueadero(String tipoVehiculo){
@@ -156,28 +151,6 @@ public class Vigilant {
 	}
 	
 	public List<ParkingRegister> consultarVehiculos(){
-		ResultSet rs = repositorioParqueadero.obtenerVehiculosParqueados();
-		
-		List<ParkingRegister> registros = new ArrayList();
-		Vehicle vehiculoActual;
-		String placaActual;
-		String tipoVehiculo;
-		Date fechaIngreso;
-		try {
-			while (rs.next()) {
-				placaActual=rs.getString(1);
-				tipoVehiculo=rs.getString(2);
-				fechaIngreso=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(rs.getString(3).substring(0,19));
-				
-				vehiculoActual=new Vehicle(placaActual);
-				
-				registros.add(new ParkingRegister(vehiculoActual,fechaIngreso,tipoVehiculo));
-			}
-		} catch (SQLException e) {
-			LOGGER.log(LOGGER.getLevel(), e.toString());
-		} catch (ParseException e) {
-			LOGGER.log(LOGGER.getLevel(), e.toString());
-		}
-		return registros;
+		return repositorioParqueadero.obtenerVehiculosParqueados();
 	}
 }

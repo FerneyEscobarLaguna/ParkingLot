@@ -1,6 +1,8 @@
 package co.ceiba.service;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
 
 import co.ceiba.domain.ParkingRegister;
 
@@ -15,7 +17,7 @@ public interface IParkingRegisterService {
 	 * Permite registrar el ingreso de un vehiculo al parqueadero
 	 * @param registroParqueadero
 	 */
-	void registrarIngreso(ParkingRegister registroParqueadero);
+	boolean registrarIngreso(ParkingRegister registroParqueadero);
 	
 	/**
 	 * Permite registrar la salida de un vehiculo del parqueadero
@@ -27,7 +29,7 @@ public interface IParkingRegisterService {
 	 * Permite consultar los vehiculos en el parqueadero
 	 * @param registroParqueadero
 	 */
-	ResultSet obtenerVehiculosParqueados();
+	List<ParkingRegister> obtenerVehiculosParqueados();
 	
 	/**
 	 * Permite consultar la cantidad de vehiculos en el parqueadero de un tipo espesifico

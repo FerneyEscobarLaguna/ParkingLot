@@ -5,7 +5,9 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Logger;
 
 import co.ceiba.conection.Conection;
@@ -48,7 +50,7 @@ public class ParkingRegisterService implements IParkingRegisterService{
 		return null;
 	}
 	
-	public void registrarIngreso(ParkingRegister registroParqueadero) {
+	public boolean registrarIngreso(ParkingRegister registroParqueadero){
 		DateFormat df = new SimpleDateFormat(DATEFORMAT);
 		String fechaIngreso = df.format(registroParqueadero.getFechaIngreso());
 		String placa = registroParqueadero.getVehiculo().getPlaca();
@@ -62,7 +64,12 @@ public class ParkingRegisterService implements IParkingRegisterService{
 			insert= "INSERT INTO REGISTRO_PARQUEADERO(PLACA,TIPO_VEHICULO,FECHA_INGRESO) "+
 					"VALUES('" + placa + "','"+tipoVehiculo+"','"+fechaIngreso+"')";
 		Conection con= new Conection();
-		con.executeUpdate(insert);
+		try {
+			con.executeUpdate(insert);
+		} catch (SQLException e) {
+			return false;
+		}
+		return true;
 	}
 	
 	public void registraSalida(ParkingRegister registroParqueadero) {
@@ -72,13 +79,39 @@ public class ParkingRegisterService implements IParkingRegisterService{
 		String fechaSalida = df.format(registroParqueadero.getFechaSalida());
 		Conection con= new Conection();
 		String update = "UPDATE REGISTRO_PARQUEADERO SET COSTO_PARQUEADERO="+costo+", FECHA_SALIDA='"+fechaSalida+"' WHERE REGISTRO_PARQUEADERO_ID="+registroVehiculoId;
-		con.executeUpdate(update);
+		try {
+			con.executeUpdate(update);
+		} catch (SQLException e) {
+			LOGGER.log(LOGGER.getLevel(), e.toString());
+		}
 	}
 
-	public ResultSet obtenerVehiculosParqueados() {
+	public List<ParkingRegister> obtenerVehiculosParqueados() {
 		Conection con= new Conection();
 		String query = "SELECT PLACA,TIPO_VEHICULO,FECHA_INGRESO FROM REGISTRO_PARQUEADERO WHERE FECHA_SALIDA IS NULl";
-		return con.executeQuery(query);		
+		ResultSet rs = con.executeQuery(query);	
+		
+		List<ParkingRegister> registros = new ArrayList();
+		Vehicle vehiculoActual;
+		String placaActual;
+		String tipoVehiculo;
+		Date fechaIngreso;
+		try {
+			while (rs.next()) {
+				placaActual=rs.getString(1);
+				tipoVehiculo=rs.getString(2);
+				fechaIngreso=new SimpleDateFormat(DATEFORMAT).parse(rs.getString(3).substring(0,19));
+				
+				vehiculoActual=new Vehicle(placaActual);
+				
+				registros.add(new ParkingRegister(vehiculoActual,fechaIngreso,tipoVehiculo));
+			}
+		} catch (SQLException e) {
+			LOGGER.log(LOGGER.getLevel(), e.toString());
+		} catch (ParseException e) {
+			LOGGER.log(LOGGER.getLevel(), e.toString());
+		}
+		return registros;
 	}
 	
 	public int contarVehiculosTipo(String tipo){
