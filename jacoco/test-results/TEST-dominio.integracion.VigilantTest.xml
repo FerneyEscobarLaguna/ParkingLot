@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="dominio.integracion.VigilantTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2017-12-21T14:04:21" hostname="FERNEY-ESCOBAR" time="0.664">
+<testsuite name="dominio.integracion.VigilantTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2017-12-21T19:33:39" hostname="FERNEY-ESCOBAR" time="0.027">
   <properties/>
-  <testcase name="registrarSalidaCarroDiasTest" classname="dominio.integracion.VigilantTest" time="0.648"/>
-  <testcase name="registrarSalidaMotoTest" classname="dominio.integracion.VigilantTest" time="0.0"/>
+  <testcase name="registrarSalidaCarroDiasTest" classname="dominio.integracion.VigilantTest" time="0.018"/>
+  <testcase name="registrarSalidaMotoTest" classname="dominio.integracion.VigilantTest" time="0.001"/>
   <testcase name="registrarIngresoPlacaATest" classname="dominio.integracion.VigilantTest" time="0.0"/>
   <testcase name="registrarSalidaMotoDiasTest" classname="dominio.integracion.VigilantTest" time="0.0"/>
   <testcase name="registrarSalidaMotoCilindrajeTest" classname="dominio.integracion.VigilantTest" time="0.0"/>
-  <testcase name="registrarSalidaCarroMinutosTest" classname="dominio.integracion.VigilantTest" time="0.0"/>
-  <testcase name="registrarIngresoVehiculoErrorTest" classname="dominio.integracion.VigilantTest" time="0.0"/>
-  <testcase name="registrarSalidaCarroDiaTest" classname="dominio.integracion.VigilantTest" time="0.0"/>
-  <testcase name="registrarIngresoMotosSimultaneasTest" classname="dominio.integracion.VigilantTest" time="0.016"/>
+  <testcase name="registrarSalidaCarroMinutosTest" classname="dominio.integracion.VigilantTest" time="0.001"/>
+  <testcase name="registrarIngresoVehiculoErrorTest" classname="dominio.integracion.VigilantTest" time="0.001"/>
+  <testcase name="registrarSalidaCarroDiaTest" classname="dominio.integracion.VigilantTest" time="0.001"/>
+  <testcase name="registrarIngresoMotosSimultaneasTest" classname="dominio.integracion.VigilantTest" time="0.0"/>
   <testcase name="registrarSalidaCarroNoParqueadoTest" classname="dominio.integracion.VigilantTest" time="0.0"/>
-  <testcase name="registrarIngresoVehiculoParqueadoTest" classname="dominio.integracion.VigilantTest" time="0.0"/>
-  <testcase name="registrarSalidaCarroTest" classname="dominio.integracion.VigilantTest" time="0.0"/>
+  <testcase name="registrarIngresoVehiculoParqueadoTest" classname="dominio.integracion.VigilantTest" time="0.001"/>
+  <testcase name="registrarSalidaCarroTest" classname="dominio.integracion.VigilantTest" time="0.001"/>
   <testcase name="registrarIngresoCarrosSimultaneasTest" classname="dominio.integracion.VigilantTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

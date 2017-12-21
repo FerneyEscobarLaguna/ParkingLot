@@ -4,13 +4,12 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import org.hibernate.validator.constraints.NotEmpty;
 import org.junit.Test;
-import org.mockito.Mockito;
-import org.mockito.internal.matchers.Any;
 
 import co.ceiba.domain.Car;
 import co.ceiba.domain.Motorcycle;
@@ -91,13 +90,31 @@ public class VigilantTest {
 	public void registrarIngresoPlacaATest(){
 		// arrange
 		String placaConA = "AAA-123";
-		CarTestDataBuilder carroTestDataBuilder = new CarTestDataBuilder();
-		Car carro = carroTestDataBuilder.conPlaca(placaConA).build();
-		Vigilant vigilante = new Vigilant();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String stringFechaDomingo = "2017-12-17";
+		String stringFechaLunes = "2017-12-18";
+		String stringFechaMartes = "2017-12-19";
+		Date fechaDomingo = null;
+		Date fechaLunes = null;
+		Date fechaMartes = null;
+		try {
+			fechaDomingo = sdf.parse(stringFechaDomingo);
+			fechaLunes = sdf.parse(stringFechaLunes);
+			fechaMartes = sdf.parse(stringFechaMartes);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		IParkingRegisterService repositorioParqueadero = mock(IParkingRegisterService.class);
+		Vigilant vigilante = new Vigilant(repositorioParqueadero);
 		// act
-		String mensaje = vigilante.registrarIngresoVehiculo(carro);
+		boolean domingo = vigilante.validarPlacaHabil(placaConA,fechaDomingo);
+		boolean lunes = vigilante.validarPlacaHabil(placaConA,fechaLunes);
+		boolean martes = vigilante.validarPlacaHabil(placaConA,fechaMartes);
 		//assert
-		assertEquals(Vigilant.PLACA_NO_HABIL,mensaje);
+		assertTrue(domingo);
+		assertTrue(lunes);
+		assertFalse(martes);
 	}
 	
 	@Test
@@ -249,7 +266,6 @@ public class VigilantTest {
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(new Date());
 		calendar.add(Calendar.HOUR, -27);
-		Date fechaIngreso = calendar.getTime();//Se crea la fecha de ingreso esperada
 		
 		IParkingRegisterService repositorioParqueadero = mock(IParkingRegisterService.class);
 		when(repositorioParqueadero.obtenerVehiculoParqueadoPlaca(carro.getPlaca())).thenReturn(null);

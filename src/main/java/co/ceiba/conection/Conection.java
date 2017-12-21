@@ -14,6 +14,9 @@ public class Conection {
 		} catch (ClassNotFoundException e1) {
 			LOGGER.log(LOGGER.getLevel(), e1.toString());
 		}
+	}
+	
+	public void conect(){
 		try{
 			con = DriverManager.getConnection("jdbc:sqlserver://mssql3.gear.host","parqueaderoceiba","Do4sjHrB!Dd~");
 		}catch(SQLException e){
@@ -50,7 +53,8 @@ public class Conection {
 	
 	public void close(){
 		try {
-			con.close();
+			if(con!=null)
+				con.close();
 		} catch (SQLException e) {
 			LOGGER.log(LOGGER.getLevel(), e.toString());
 		}

@@ -1,14 +1,8 @@
 package co.ceiba.domain;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Logger;
 
 import co.ceiba.conection.Conection;
 import co.ceiba.service.IParkingRegisterService;
@@ -21,7 +15,6 @@ public class Vigilant {
 	public static final String PARQUEADERO_LLENO = "No hay lugares disponibles para el vehiculo";
 	public static final String VEHICULO_PARQUEADO = "El vehiculo ya se encuentra en el parqueadero";
 	public static final String ERROR = "Ha ocurrido un error durante el registro del vehiculo, intente de nuevo";
-	private static final Logger LOGGER = Logger.getLogger( Conection.class.getName() );
 	
 	private IParkingRegisterService repositorioParqueadero;
 	
@@ -30,7 +23,7 @@ public class Vigilant {
 	}
 	
 	public Vigilant(){
-		this.repositorioParqueadero = new ParkingRegisterService();
+		this.repositorioParqueadero = new ParkingRegisterService(new Conection());
 	}
 	
 	public String registrarIngresoVehiculo(Vehicle vehiculo){
@@ -81,11 +74,11 @@ public class Vigilant {
 		return true;
 	}
 	
-	private boolean validarPlacaHabil(String placa, Date fechaIngreso){
+	public boolean validarPlacaHabil(String placa, Date fechaIngreso){
 		Calendar ca = Calendar.getInstance();
 		ca.setTime(fechaIngreso);
 		int day = ca.get(Calendar.DAY_OF_WEEK);
-		return placa.substring(0, 1).equals("A") && day!=0 && day!=1?false:true;
+		return placa.substring(0, 1).equals("A") && day!=1 && day!=2?false:true;
 	}
 	
 	public double registrarSalidaVehiculo(String placa){
@@ -127,10 +120,7 @@ public class Vigilant {
 			}
 		}else{
 			diasCobrar=0;
-			if(horasEnParqueadero<1)
-				horasCobrar=1;
-			else
-				horasCobrar=horasEnParqueadero;
+			horasCobrar=horasEnParqueadero;
 		}
 		
 		if(tipoVehiculo.equals("C")){
