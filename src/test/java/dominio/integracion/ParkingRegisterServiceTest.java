@@ -9,6 +9,7 @@ import co.ceiba.domain.Motorcycle;
 import co.ceiba.domain.ParkingRegister;
 import co.ceiba.domain.Vigilant;
 import co.ceiba.testDataBuilder.CarTestDataBuilder;
+import co.ceiba.testDataBuilder.MotorcycleTestDataBuilder;
 import persistencia.repositorio.ParkingRegisterService;
 
 import static org.junit.Assert.*;
@@ -118,6 +119,19 @@ public class ParkingRegisterServiceTest {
 		//arrange
 		Car car = new CarTestDataBuilder().build();	
 		ParkingRegister pr = new ParkingRegister(car);
+		Conection con = mock(Conection.class);
+		ParkingRegisterService prs = new ParkingRegisterService(con);
+		//act
+		boolean respuesta=prs.registrarIngreso(pr);
+		//assert
+		assertTrue(respuesta);
+	}
+	
+	@Test
+	public void registrarIngresoMotoTest(){
+		//arrange
+		Motorcycle motorcycle = new MotorcycleTestDataBuilder().build();	
+		ParkingRegister pr = new ParkingRegister(motorcycle);
 		Conection con = mock(Conection.class);
 		ParkingRegisterService prs = new ParkingRegisterService(con);
 		//act

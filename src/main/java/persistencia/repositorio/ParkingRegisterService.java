@@ -109,7 +109,7 @@ public class ParkingRegisterService implements IParkingRegisterService{
 				
 				vehiculoActual=new Vehicle(placaActual);
 				
-				registros.add(new ParkingRegister(vehiculoActual,fechaIngreso,tipoVehiculo));
+				registros.add(new ParkingRegister(vehiculoActual,fechaIngreso,tipoVehiculo));				
 			}
 			con.close();
 		} catch (SQLException e) {
