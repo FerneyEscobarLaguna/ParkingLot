@@ -59,7 +59,7 @@ public class Vigilant {
 	}
 	
 	private boolean hayCupoParqueadero(String tipoVehiculo){
-		return!(repositorioParqueadero.contarVehiculosTipo(tipoVehiculo)>=
+		return (repositorioParqueadero.contarVehiculosTipo(tipoVehiculo)<
 				repositorioDisponivilidad.obtenerDisponibilidadTipoVehiculo(tipoVehiculo));
 	}
 	

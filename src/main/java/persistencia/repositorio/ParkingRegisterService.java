@@ -47,9 +47,7 @@ public class ParkingRegisterService implements IParkingRegisterService{
 				con.close();
 				return new ParkingRegister(registroVehiculoId,vehiculo,fechaIngreso,null,0);
 			}
-		} catch (SQLException e) {
-			LOGGER.log(LOGGER.getLevel(), e.toString());
-		} catch (ParseException e) {
+		} catch (SQLException|ParseException e) {
 			LOGGER.log(LOGGER.getLevel(), e.toString());
 		} 
 		return null;
@@ -71,10 +69,10 @@ public class ParkingRegisterService implements IParkingRegisterService{
 		con.conect();
 		try {
 			con.executeUpdate(insert);
+			return true;
 		} catch (SQLException e) {
 			return false;
 		}
-		return true;
 	}
 	
 	public void registraSalida(ParkingRegister registroParqueadero) {
@@ -112,9 +110,7 @@ public class ParkingRegisterService implements IParkingRegisterService{
 				registros.add(new ParkingRegister(vehiculoActual,fechaIngreso,tipoVehiculo));				
 			}
 			con.close();
-		} catch (SQLException e) {
-			LOGGER.log(LOGGER.getLevel(), e.toString());
-		} catch (ParseException e) {
+		} catch (SQLException|ParseException e) {
 			LOGGER.log(LOGGER.getLevel(), e.toString());
 		}
 		return registros;
