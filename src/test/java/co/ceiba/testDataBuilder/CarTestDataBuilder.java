@@ -1,6 +1,9 @@
 package co.ceiba.testDataBuilder;
 
 import co.ceiba.domain.Car;
+import co.ceiba.service.IParkingRate;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class CarTestDataBuilder {
 	private final String PLACA = "FALS-123";
@@ -17,6 +20,9 @@ public class CarTestDataBuilder {
 	}
 	
 	public Car build(){
-		return new Car(this.placa);
+		IParkingRate parkingRate = mock(IParkingRate.class);
+		when(parkingRate.obtenerTarifa("C", "H")).thenReturn((double) 1000);
+		when(parkingRate.obtenerTarifa("C", "D")).thenReturn((double) 8000);
+		return new Car(this.placa,parkingRate);
 	}
 }

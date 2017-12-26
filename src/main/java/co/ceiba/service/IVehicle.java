@@ -1,5 +1,5 @@
 package co.ceiba.service;
 
 public interface IVehicle {
-	double getCostParking(int hoursParking);
+	double getParkingCost(int hoursParking);
 }

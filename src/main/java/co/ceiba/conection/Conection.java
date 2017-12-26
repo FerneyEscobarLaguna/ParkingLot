@@ -12,7 +12,7 @@ public class Conection {
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 		} catch (ClassNotFoundException e1) {
-			LOGGER.log(LOGGER.getLevel(), e1.toString());
+			e1.printStackTrace();
 		}
 	}
 	

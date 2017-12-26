@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="dominio.unitaria.ParkingRegisterTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2017-12-26T15:39:38" hostname="FERNEY-ESCOBAR" time="0.001">
+<testsuite name="dominio.unitaria.ParkingRegisterTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2017-12-26T20:10:37" hostname="FERNEY-ESCOBAR" time="0.003">
   <properties/>
   <testcase name="modificarRegistroParqueadero" classname="dominio.unitaria.ParkingRegisterTest" time="0.001"/>
   <testcase name="crearRegistroParqueaderoCosto" classname="dominio.unitaria.ParkingRegisterTest" time="0.0"/>
-  <testcase name="crearRegistroParqueadero" classname="dominio.unitaria.ParkingRegisterTest" time="0.0"/>
+  <testcase name="crearRegistroParqueadero" classname="dominio.unitaria.ParkingRegisterTest" time="0.001"/>
   <testcase name="crearRegistroParqueaderoRegistroVehiculoId" classname="dominio.unitaria.ParkingRegisterTest" time="0.0"/>
-  <testcase name="crearRegistroParqueaderoTipoVehiculo" classname="dominio.unitaria.ParkingRegisterTest" time="0.0"/>
+  <testcase name="crearRegistroParqueaderoTipoVehiculo" classname="dominio.unitaria.ParkingRegisterTest" time="0.001"/>
   <testcase name="crearRegistroParqueaderoRegistroIdCosto" classname="dominio.unitaria.ParkingRegisterTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

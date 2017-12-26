@@ -45,7 +45,7 @@ public class Vehicle implements IVehicle{
 		this.placa = placa;
 	}
 
-	public double getCostParking(int hoursParking) {
+	public double getParkingCost(int hoursParking) {
 		return 0;
 	}	
 }

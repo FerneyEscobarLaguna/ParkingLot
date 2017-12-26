@@ -96,7 +96,7 @@ public class Vigilant {
 	}
 	
 	private double calcularCosto(int horasEnParqueadero, Vehicle vehiculo) {		
-		return vehiculo.getCostParking(horasEnParqueadero);
+		return vehiculo.getParkingCost(horasEnParqueadero);
 	}
 
 	public boolean vehiculoParqueado(String placa){

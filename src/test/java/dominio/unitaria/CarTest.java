@@ -5,7 +5,12 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import co.ceiba.domain.Car;
+import co.ceiba.service.IParkingRate;
 import co.ceiba.testDataBuilder.CarTestDataBuilder;
+import persistencia.repositorio.ParkingRate;
+
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class CarTest {
 	private static final String PLACA = "PLACA-123";
@@ -48,5 +53,21 @@ public class CarTest {
 		// assert
 		assertEquals(PLACA, car.getPlaca());
 		assertEquals("C", car.getTipoVehiculo());
+	}
+	
+	@Test
+	public void getParkingCostTest() {
+		
+		// arrange
+		IParkingRate parkingRate = mock(IParkingRate.class); 
+		when(parkingRate.obtenerTarifa("C", "H")).thenReturn((double) 1000);
+		when(parkingRate.obtenerTarifa("C", "D")).thenReturn((double) 8000);
+		Car car = new Car("PRU-123", parkingRate);
+
+		// act
+		double costo = car.getParkingCost(27);
+
+		// assert
+		assertEquals(0, 11000,costo);
 	}
 }
