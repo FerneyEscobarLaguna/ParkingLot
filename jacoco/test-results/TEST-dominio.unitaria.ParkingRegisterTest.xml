@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="dominio.unitaria.ParkingRegisterTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2017-12-26T21:18:39" hostname="FERNEY-ESCOBAR" time="0.016">
+<testsuite name="dominio.unitaria.ParkingRegisterTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2017-12-26T21:56:53" hostname="FERNEY-ESCOBAR" time="0.0">
   <properties/>
   <testcase name="modificarRegistroParqueadero" classname="dominio.unitaria.ParkingRegisterTest" time="0.0"/>
   <testcase name="crearRegistroParqueaderoCosto" classname="dominio.unitaria.ParkingRegisterTest" time="0.0"/>

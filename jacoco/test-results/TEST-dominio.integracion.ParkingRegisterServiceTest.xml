@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="dominio.integracion.ParkingRegisterServiceTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2017-12-26T21:18:39" hostname="FERNEY-ESCOBAR" time="0.078">
+<testsuite name="dominio.integracion.ParkingRegisterServiceTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2017-12-26T21:56:53" hostname="FERNEY-ESCOBAR" time="0.059">
   <properties/>
   <testcase name="contarVehiculosTipoCeroTest" classname="dominio.integracion.ParkingRegisterServiceTest" time="0.0"/>
   <testcase name="obtenerVehiculoParqueadoPlacaNullTest" classname="dominio.integracion.ParkingRegisterServiceTest" time="0.0"/>
   <testcase name="contarVehiculosTipoTest" classname="dominio.integracion.ParkingRegisterServiceTest" time="0.0"/>
   <testcase name="obtenerVehiculosParqueadosTest" classname="dominio.integracion.ParkingRegisterServiceTest" time="0.0"/>
-  <testcase name="registrarIngresoTest" classname="dominio.integracion.ParkingRegisterServiceTest" time="0.015"/>
+  <testcase name="registrarIngresoTest" classname="dominio.integracion.ParkingRegisterServiceTest" time="0.016"/>
   <testcase name="registraSalidaTest" classname="dominio.integracion.ParkingRegisterServiceTest" time="0.0"/>
-  <testcase name="obtenerVehiculoParqueadoPlacaMotoTest" classname="dominio.integracion.ParkingRegisterServiceTest" time="0.016"/>
-  <testcase name="obtenerVehiculoParqueadoPlacaTest" classname="dominio.integracion.ParkingRegisterServiceTest" time="0.016"/>
-  <testcase name="registrarIngresoErrorTest" classname="dominio.integracion.ParkingRegisterServiceTest" time="0.016"/>
-  <testcase name="registrarIngresoMotoTest" classname="dominio.integracion.ParkingRegisterServiceTest" time="0.0"/>
+  <testcase name="obtenerVehiculoParqueadoPlacaMotoTest" classname="dominio.integracion.ParkingRegisterServiceTest" time="0.015"/>
+  <testcase name="obtenerVehiculoParqueadoPlacaTest" classname="dominio.integracion.ParkingRegisterServiceTest" time="0.019"/>
+  <testcase name="registrarIngresoErrorTest" classname="dominio.integracion.ParkingRegisterServiceTest" time="0.006"/>
+  <testcase name="registrarIngresoMotoTest" classname="dominio.integracion.ParkingRegisterServiceTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[java.lang.ClassNotFoundException: com.microsoft.sqlserver.jdbc.SQLServerDriver
 	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
