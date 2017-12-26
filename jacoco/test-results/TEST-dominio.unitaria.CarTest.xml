@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="dominio.unitaria.CarTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-12-26T12:46:15" hostname="FERNEY-ESCOBAR" time="0.0">
+<testsuite name="dominio.unitaria.CarTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-12-26T15:39:38" hostname="FERNEY-ESCOBAR" time="0.0">
   <properties/>
   <testcase name="crearCarroVacioTest" classname="dominio.unitaria.CarTest" time="0.0"/>
   <testcase name="modificarCarroTest" classname="dominio.unitaria.CarTest" time="0.0"/>

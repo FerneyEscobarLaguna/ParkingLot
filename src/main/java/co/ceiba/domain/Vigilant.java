@@ -5,8 +5,10 @@ import java.util.Date;
 import java.util.List;
 
 import co.ceiba.conection.Conection;
+import co.ceiba.service.IParkingAvailability;
 import co.ceiba.service.IParkingRegisterService;
 import co.ceiba.service.Tool;
+import persistencia.repositorio.ParkingAvailability;
 import persistencia.repositorio.ParkingRegisterService;
 
 public class Vigilant {
@@ -17,13 +19,16 @@ public class Vigilant {
 	public static final String ERROR = "Ha ocurrido un error durante el registro del vehiculo, intente de nuevo";
 	
 	private IParkingRegisterService repositorioParqueadero;
+	private IParkingAvailability repositorioDisponivilidad;
 	
-	public Vigilant(IParkingRegisterService repositorioParqueadero) {
+	public Vigilant(IParkingRegisterService repositorioParqueadero, IParkingAvailability disponivilidadParqueadero) {
 		this.repositorioParqueadero = repositorioParqueadero;
+		this.repositorioDisponivilidad = disponivilidadParqueadero;
 	}
 	
 	public Vigilant(){
 		this.repositorioParqueadero = new ParkingRegisterService(new Conection());
+		this.repositorioDisponivilidad = new ParkingAvailability(new Conection());
 	}
 	
 	public String registrarIngresoVehiculo(Vehicle vehiculo){
@@ -54,13 +59,9 @@ public class Vigilant {
 	}
 	
 	private boolean hayCupoParqueadero(String tipoVehiculo){
-		if(tipoVehiculo.equals("C")){
-			if(repositorioParqueadero.contarVehiculosTipo(tipoVehiculo)>=20)
-				return false;
-		}else{
-			if(repositorioParqueadero.contarVehiculosTipo(tipoVehiculo)>=10)
-				return false;
-		}
+		if(repositorioParqueadero.contarVehiculosTipo(tipoVehiculo)>=
+				repositorioDisponivilidad.obtenerDisponibilidadTipoVehiculo(tipoVehiculo))
+			return false;
 		return true;
 	}
 	

@@ -28,7 +28,7 @@ public class Motorcycle extends Vehicle{
 		int diasCobrar=0;
 		int horasCobrar=0;
 		double valorcobrar=0;
-		if(hoursParking>9){
+		if(hoursParking>=9){
 			if(hoursParking>24){
 				diasCobrar=hoursParking/24;
 				horasCobrar=hoursParking%24;
