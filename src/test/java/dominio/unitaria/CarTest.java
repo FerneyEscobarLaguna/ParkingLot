@@ -21,6 +21,7 @@ public class CarTest {
 
 		// assert
 		assertEquals(PLACA, car.getPlaca());
+		assertEquals("C", car.getTipoVehiculo());
 	}
 	
 	@Test
@@ -31,6 +32,7 @@ public class CarTest {
 
 		// assert
 		assertEquals(PLACA, car.getPlaca());
+		assertEquals("C", car.getTipoVehiculo());
 	}
 	
 	@Test
@@ -45,5 +47,6 @@ public class CarTest {
 
 		// assert
 		assertEquals(PLACA, car.getPlaca());
+		assertEquals("C", car.getTipoVehiculo());
 	}
 }

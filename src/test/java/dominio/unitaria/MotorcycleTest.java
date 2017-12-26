@@ -25,6 +25,7 @@ public class MotorcycleTest {
 		// assert
 		assertEquals(PLACA, motorcycle.getPlaca());
 		assertEquals(CILINDRAJE, motorcycle.getCilindraje());
+		assertEquals("M", motorcycle.getTipoVehiculo());
 	}
 	
 	@Test
@@ -36,6 +37,7 @@ public class MotorcycleTest {
 
 		// assert
 		assertEquals(PLACA, motorcycle.getPlaca());
+		assertEquals("M", motorcycle.getTipoVehiculo());
 	}
 	
 	@Test
@@ -48,6 +50,7 @@ public class MotorcycleTest {
 
 		// assert
 		assertEquals(PLACA, motorcycle.getPlaca());
+		assertEquals("M", motorcycle.getTipoVehiculo());
 	}
 	
 	@Test
@@ -64,5 +67,6 @@ public class MotorcycleTest {
 		// assert
 		assertEquals(PLACA, motorcycle.getPlaca());
 		assertEquals(CILINDRAJE, motorcycle.getCilindraje());
+		assertEquals("M", motorcycle.getTipoVehiculo());
 	}
 }

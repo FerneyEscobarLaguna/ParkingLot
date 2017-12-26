@@ -37,7 +37,7 @@ public class Vigilant {
 			return VEHICULO_PARQUEADO;
 		}
 		
-		String tipoVehiculo=definirTipoVehiculo(vehiculo);
+		String tipoVehiculo=vehiculo.getTipoVehiculo();
 		
 		if(!hayCupoParqueadero(tipoVehiculo))
 			return PARQUEADERO_LLENO;
@@ -46,16 +46,6 @@ public class Vigilant {
 			return VEHICULO_INGRESADO;
 		else
 			return ERROR;
-	}
-	
-	private String definirTipoVehiculo(Vehicle vehiculo){
-		String tipoVehiculo="";
-		if(vehiculo.getClass().equals(Car.class)){
-			tipoVehiculo="C";
-		}else{
-			tipoVehiculo="M";
-		}
-		return tipoVehiculo;
 	}
 	
 	private boolean registrarIngreso(Vehicle vehiculo){
@@ -89,14 +79,12 @@ public class Vigilant {
 		
 		Vehicle vehiculo=registroParqueadero.getVehiculo();
 		
-		String tipoVehiculo = definirTipoVehiculo(vehiculo);
-		
 		Date fechaIngreso = registroParqueadero.getFechaIngreso();
 		Date fechaSalida = new Date();
 		
 		int horasEnParqueadero = Tool.diferenciaHoras(fechaIngreso,fechaSalida);
 		
-		double valorcobrar= calcularCosto(horasEnParqueadero,tipoVehiculo,vehiculo);
+		double valorcobrar= calcularCosto(horasEnParqueadero,vehiculo);
 		
 		registroParqueadero.setCostoParqueadero(valorcobrar);
 		registroParqueadero.setFechaSalida(fechaSalida);
@@ -106,33 +94,8 @@ public class Vigilant {
 		return valorcobrar;
 	}
 	
-	private double calcularCosto(int horasEnParqueadero, String tipoVehiculo, Vehicle vehiculo) {
-		int diasCobrar=0;
-		int horasCobrar=0;
-		double valorcobrar=0;
-		if(horasEnParqueadero>9){
-			if(horasEnParqueadero>24){
-				diasCobrar=horasEnParqueadero/24;
-				horasCobrar=horasEnParqueadero%24;
-			}else{
-				diasCobrar=1;
-				horasCobrar=0;				
-			}
-		}else{
-			diasCobrar=0;
-			horasCobrar=horasEnParqueadero;
-		}
-		
-		if(tipoVehiculo.equals("C")){
-			valorcobrar=(diasCobrar*8000d) + (horasCobrar*1000d);
-		}else{
-			int cilindraje = ((Motorcycle)vehiculo).getCilindraje();
-			valorcobrar=(diasCobrar*600d) + (horasCobrar*500d);
-			if(cilindraje>500)
-				valorcobrar+=2000;
-		}
-		
-		return valorcobrar;
+	private double calcularCosto(int horasEnParqueadero, Vehicle vehiculo) {		
+		return vehiculo.getCostParking(horasEnParqueadero);
 	}
 
 	public boolean vehiculoParqueado(String placa){

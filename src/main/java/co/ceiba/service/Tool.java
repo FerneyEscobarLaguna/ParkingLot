@@ -11,6 +11,6 @@ public final class Tool {
 		long diff = fechaSalida.getTime() - fechaIngreso.getTime();
 		long segundos = diff / 1000;
 		long minutos = segundos / 60;
-		return Math.round(minutos / 60f);		
+		return (int) Math.ceil(minutos / 60f);		
 	}
 }
