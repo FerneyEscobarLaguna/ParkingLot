@@ -59,10 +59,8 @@ public class Vigilant {
 	}
 	
 	private boolean hayCupoParqueadero(String tipoVehiculo){
-		if(repositorioParqueadero.contarVehiculosTipo(tipoVehiculo)>=
-				repositorioDisponivilidad.obtenerDisponibilidadTipoVehiculo(tipoVehiculo))
-			return false;
-		return true;
+		return!(repositorioParqueadero.contarVehiculosTipo(tipoVehiculo)>=
+				repositorioDisponivilidad.obtenerDisponibilidadTipoVehiculo(tipoVehiculo));
 	}
 	
 	public boolean validarPlacaHabil(String placa, Date fechaIngreso){

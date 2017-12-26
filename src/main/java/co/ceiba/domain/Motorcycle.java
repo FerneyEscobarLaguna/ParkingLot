@@ -38,6 +38,7 @@ public class Motorcycle extends Vehicle{
 		this.cilindraje = cilindraje;
 	}	
 	
+	@Override
 	public double getParkingCost(int hoursParking) {
 		int diasCobrar=0;
 		int horasCobrar=0;
@@ -53,13 +54,12 @@ public class Motorcycle extends Vehicle{
 			diasCobrar=0;
 			horasCobrar=hoursParking;
 		}
-		int cilindraje = this.cilindraje;
 		double tarifaHora = repositorioTarifa.obtenerTarifa(this.getTipoVehiculo(), "H");
 		double tarifaDia = repositorioTarifa.obtenerTarifa(this.getTipoVehiculo(), "D");
 		
 		valorcobrar=(diasCobrar*tarifaDia) + (horasCobrar*tarifaHora);
 		
-		if(cilindraje>500)
+		if(this.cilindraje>500)
 			valorcobrar+=2000;
 		return valorcobrar;
 	}	

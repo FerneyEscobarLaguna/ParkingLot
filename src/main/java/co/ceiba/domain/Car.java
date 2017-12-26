@@ -23,6 +23,7 @@ public class Car extends Vehicle{
 		this.repositorioTarifa = repositorioTarifa;
 	}	
 	
+	@Override
 	public double getParkingCost(int hoursParking) {
 		int diasCobrar=0;
 		int horasCobrar=0;
