@@ -34,8 +34,8 @@ public class ParkingRegisterTest {
 		assertEquals(registroParqueadero.getFechaIngreso(),FECHAINGRESO);
 		assertEquals(registroParqueadero.getFechaSalida(),FECHASALIDA);
 		assertEquals(registroParqueadero.getTipoVehiculo(),TIPOVEHICULO);
-		assertEquals(0,registroParqueadero.getCostoParqueadero(),COSTOPARQUEADERO);
-		assertEquals(0,registroParqueadero.getRegistroVehiculoId(),REGISTROVEHICULOID);
+		assertEquals(COSTOPARQUEADERO,registroParqueadero.getCostoParqueadero(),0);
+		assertEquals(REGISTROVEHICULOID,registroParqueadero.getRegistroVehiculoId(),0);
 	}
 	
 	@Test
@@ -73,7 +73,7 @@ public class ParkingRegisterTest {
 		assertEquals(registroParqueadero.getVehiculo().getPlaca(),car.getPlaca());
 		assertEquals(registroParqueadero.getFechaIngreso(),FECHAINGRESO);
 		assertEquals(registroParqueadero.getFechaSalida(),FECHASALIDA);
-		assertEquals(0,registroParqueadero.getCostoParqueadero(),COSTOPARQUEADERO);
+		assertEquals(COSTOPARQUEADERO,registroParqueadero.getCostoParqueadero(),0);
 	}
 	
 	@Test
@@ -87,7 +87,7 @@ public class ParkingRegisterTest {
 		assertEquals(registroParqueadero.getVehiculo().getPlaca(),car.getPlaca());
 		assertEquals(registroParqueadero.getFechaIngreso(),FECHAINGRESO);
 		assertEquals(registroParqueadero.getFechaSalida(),FECHASALIDA);
-		assertEquals(0,registroParqueadero.getCostoParqueadero(),COSTOPARQUEADERO);
+		assertEquals(COSTOPARQUEADERO,registroParqueadero.getCostoParqueadero(),0);
 	}
 	
 	@Test
@@ -106,8 +106,8 @@ public class ParkingRegisterTest {
 		//assert
 		assertEquals(registroParqueadero.getFechaIngreso(),FECHAINGRESO);
 		assertEquals(registroParqueadero.getFechaSalida(),FECHASALIDA);
-		assertEquals(0,registroParqueadero.getCostoParqueadero(),COSTOPARQUEADERO);
-		assertEquals(0,registroParqueadero.getRegistroVehiculoId(),REGISTROVEHICULOID);
+		assertEquals(COSTOPARQUEADERO,registroParqueadero.getCostoParqueadero(),0);
+		assertEquals(REGISTROVEHICULOID,registroParqueadero.getRegistroVehiculoId(),0);
 		assertEquals(registroParqueadero.getTipoVehiculo(),TIPOVEHICULO);
 		assertEquals(registroParqueadero.getVehiculo().getPlaca(),vehiculo.getPlaca());
 	}

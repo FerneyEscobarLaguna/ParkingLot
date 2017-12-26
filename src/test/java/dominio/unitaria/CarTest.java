@@ -68,6 +68,6 @@ public class CarTest {
 		double costo = car.getParkingCost(27);
 
 		// assert
-		assertEquals(0, 11000,costo);
+		assertEquals(11000,costo,0);
 	}
 }

@@ -84,9 +84,9 @@ public class MotorcycleTest {
 		Motorcycle motorcycle = new Motorcycle("PRU-123", 110,parkingRate);
 
 		// act
-		double costo = motorcycle.getParkingCost(27);
+		double costo = motorcycle.getParkingCost(33);
 
 		// assert
-		assertEquals(0, 2100,costo);
+		assertEquals(8000,costo,0);
 	}
 }

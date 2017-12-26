@@ -161,7 +161,7 @@ public class VigilantTest {
 		//Act
 		double costo = vigilante.registrarSalidaVehiculo(carro.getPlaca());
 		//Assert
-		assertEquals(0,8000,costo);
+		assertEquals(8000,costo,0);
 	}
 	
 	@Test
@@ -186,7 +186,7 @@ public class VigilantTest {
 		//Act
 		double costo = vigilante.registrarSalidaVehiculo(carro.getPlaca());
 		//Assert
-		assertEquals(0,11000,costo);
+		assertEquals(11000,costo,0);
 	}
 	
 	@Test
@@ -211,7 +211,7 @@ public class VigilantTest {
 		//Act
 		double costo = vigilante.registrarSalidaVehiculo(carro.getPlaca());
 		//Assert
-		assertEquals(0,8000,costo);
+		assertEquals(8000,costo,0);
 	}
 	
 	@Test
@@ -236,7 +236,7 @@ public class VigilantTest {
 		//Act
 		double costo = vigilante.registrarSalidaVehiculo(carro.getPlaca());
 		//Assert
-		assertEquals(0,500,costo);
+		assertEquals(1000,costo,0);
 	}
 	
 	@Test
@@ -261,7 +261,7 @@ public class VigilantTest {
 		//Act
 		double costo = vigilante.registrarSalidaVehiculo(moto.getPlaca());
 		//Assert
-		assertEquals(0,4000,costo);
+		assertEquals(4000,costo,0);
 	}
 	
 	@Test
@@ -286,7 +286,7 @@ public class VigilantTest {
 		//Act
 		double costo = vigilante.registrarSalidaVehiculo(moto.getPlaca());
 		//Assert
-		assertEquals(0,2100,costo);
+		assertEquals(5500,costo,0);
 	}
 	
 	@Test
@@ -311,7 +311,7 @@ public class VigilantTest {
 		//Act
 		double costo = vigilante.registrarSalidaVehiculo(moto.getPlaca());
 		//Assert
-		assertEquals(0,4100,costo);
+		assertEquals(7500,costo,0);
 	}
 	
 	@Test
@@ -334,6 +334,6 @@ public class VigilantTest {
 		Vigilant vigilante = new Vigilant(repositorioParqueadero,repositorioDisponibilidad);
 		double costo = vigilante.registrarSalidaVehiculo(carro.getPlaca());
 		//Assert
-		assertEquals(0,0,costo);
+		assertEquals(0,costo,0);
 	}
 }

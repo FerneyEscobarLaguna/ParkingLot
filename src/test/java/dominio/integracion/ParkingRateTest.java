@@ -36,7 +36,7 @@ public class ParkingRateTest {
 		//act
 		double tarifaHoras = pr.obtenerTarifa(tipoVehiculo, tiempoHoras);
 		//assert
-		assertEquals(0,10000,tarifaHoras);
+		assertEquals(10000,tarifaHoras,0);
 	}
 	
 	@Test
@@ -59,6 +59,6 @@ public class ParkingRateTest {
 		//act
 		double tarifaDias = pr.obtenerTarifa(tipoVehiculo, tiempoDias);
 		//as
-		assertEquals(0,10000,tarifaDias);
+		assertEquals(10000,tarifaDias,0);
 	}
 }
