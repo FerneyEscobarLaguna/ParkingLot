@@ -2,6 +2,7 @@ package co.ceiba.domain;
 
 import co.ceiba.conection.Conection;
 import co.ceiba.service.IParkingRate;
+import co.ceiba.service.Tool;
 import persistencia.repositorio.ParkingRate;
 
 public class Car extends Vehicle{
@@ -25,20 +26,9 @@ public class Car extends Vehicle{
 	
 	@Override
 	public double getParkingCost(int hoursParking) {
-		int diasCobrar=0;
-		int horasCobrar=0;
+		int diasCobrar=Tool.calcularHorasDiasCobro(hoursParking, 9, true);
+		int horasCobrar=Tool.calcularHorasDiasCobro(hoursParking, 9, false);
 		double valorcobrar=0;
-		if(hoursParking>=9){
-			diasCobrar=hoursParking/24;
-			horasCobrar=hoursParking%24;
-			if(horasCobrar>=9){
-				diasCobrar++;
-				horasCobrar=0;
-			}
-		}else{
-			diasCobrar=0;
-			horasCobrar=hoursParking;
-		}
 		
 		double tarifaHora = repositorioTarifa.obtenerTarifa(this.getTipoVehiculo(), "H");
 		double tarifaDia = repositorioTarifa.obtenerTarifa(this.getTipoVehiculo(), "D");
