@@ -61,7 +61,10 @@ public class Conection {
 	
 	public boolean isClosed(){
 		try {
-			return con.isClosed();
+			if(con!=null)
+				return con.isClosed();
+			else
+				return true;
 		} catch (SQLException e) {
 			LOGGER.log(LOGGER.getLevel(), e.toString());
 			return true;

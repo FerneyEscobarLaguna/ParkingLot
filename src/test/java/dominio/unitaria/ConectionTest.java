@@ -6,9 +6,12 @@ import static org.junit.Assert.assertTrue;
 
 import java.sql.SQLException;
 
+import org.junit.Test;
+
 import static org.junit.Assert.assertNotNull;
 
 public class ConectionTest {
+	@Test
 	public void conectTest(){
 		// arrange
 		Conection con = new Conection();
@@ -23,7 +26,7 @@ public class ConectionTest {
 		close = con.isClosed();//Se verifica que se cerro la conexion
 		assertTrue(close);
 	}
-	
+	@Test
 	public void executeQueryTest(){
 		// arrange
 		Conection con = new Conection();
@@ -35,7 +38,7 @@ public class ConectionTest {
 		assertNotNull(rs);
 		con.close();
 	}
-	
+	@Test
 	public void executeUpdateTest(){
 		// arrange
 		Conection con = new Conection();
