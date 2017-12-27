@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="dominio.unitaria.MotorcycleTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2017-12-27T14:37:02" hostname="FERNEY-ESCOBAR" time="0.006">
+<testsuite name="dominio.unitaria.MotorcycleTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2017-12-27T16:28:37" hostname="FERNEY-ESCOBAR" time="0.007">
   <properties/>
-  <testcase name="getParkingCostTest" classname="dominio.unitaria.MotorcycleTest" time="0.002"/>
-  <testcase name="crearMotoTest" classname="dominio.unitaria.MotorcycleTest" time="0.002"/>
+  <testcase name="getParkingCostTest" classname="dominio.unitaria.MotorcycleTest" time="0.0"/>
+  <testcase name="crearMotoTest" classname="dominio.unitaria.MotorcycleTest" time="0.0"/>
   <testcase name="crearMotoTestPlaca" classname="dominio.unitaria.MotorcycleTest" time="0.0"/>
-  <testcase name="crearMotoTestVacio" classname="dominio.unitaria.MotorcycleTest" time="0.001"/>
-  <testcase name="modificarMotoTest" classname="dominio.unitaria.MotorcycleTest" time="0.001"/>
+  <testcase name="crearMotoTestVacio" classname="dominio.unitaria.MotorcycleTest" time="0.0"/>
+  <testcase name="modificarMotoTest" classname="dominio.unitaria.MotorcycleTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
