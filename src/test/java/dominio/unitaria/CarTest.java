@@ -7,7 +7,6 @@ import org.junit.Test;
 import co.ceiba.domain.Car;
 import co.ceiba.service.IParkingRate;
 import co.ceiba.testDataBuilder.CarTestDataBuilder;
-import persistencia.repositorio.ParkingRate;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;

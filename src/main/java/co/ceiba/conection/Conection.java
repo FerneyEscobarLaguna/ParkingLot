@@ -9,17 +9,14 @@ public class Conection {
 	private static final Logger LOGGER = Logger.getLogger( Conection.class.getName() );
 	
 	public Conection(){	
-		try {
-			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-		} catch (ClassNotFoundException e1) {
-			e1.printStackTrace();
-		}
+		//Constructor vacio ya que la conexion solo se realiza cuano es necesario (metodo conect)
 	}
 	
 	public void conect(){
 		try{
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			con = DriverManager.getConnection("jdbc:sqlserver://mssql3.gear.host","parqueaderoceiba","Do4sjHrB!Dd~");
-		}catch(SQLException e){
+		}catch(SQLException|ClassNotFoundException e){
 			LOGGER.log(LOGGER.getLevel(), e.toString());
 		}
 	}
@@ -43,8 +40,10 @@ public class Conection {
 			pst.executeUpdate();
 		} finally{
 			try {
-				if(pst!=null)
+				if(pst!=null){
 					pst.close();
+					close();
+				}
 			} catch (SQLException e) {
 				LOGGER.log(LOGGER.getLevel(), e.toString());
 			}
@@ -57,6 +56,15 @@ public class Conection {
 				con.close();
 		} catch (SQLException e) {
 			LOGGER.log(LOGGER.getLevel(), e.toString());
+		}
+	}
+	
+	public boolean isClosed(){
+		try {
+			return con.isClosed();
+		} catch (SQLException e) {
+			LOGGER.log(LOGGER.getLevel(), e.toString());
+			return true;
 		}
 	}
 }

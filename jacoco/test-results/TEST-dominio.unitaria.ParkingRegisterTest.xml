@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="dominio.unitaria.ParkingRegisterTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2017-12-26T21:56:53" hostname="FERNEY-ESCOBAR" time="0.0">
+<testsuite name="dominio.unitaria.ParkingRegisterTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2017-12-27T12:58:35" hostname="FERNEY-ESCOBAR" time="0.005">
   <properties/>
-  <testcase name="modificarRegistroParqueadero" classname="dominio.unitaria.ParkingRegisterTest" time="0.0"/>
+  <testcase name="modificarRegistroParqueadero" classname="dominio.unitaria.ParkingRegisterTest" time="0.003"/>
   <testcase name="crearRegistroParqueaderoCosto" classname="dominio.unitaria.ParkingRegisterTest" time="0.0"/>
   <testcase name="crearRegistroParqueadero" classname="dominio.unitaria.ParkingRegisterTest" time="0.0"/>
   <testcase name="crearRegistroParqueaderoRegistroVehiculoId" classname="dominio.unitaria.ParkingRegisterTest" time="0.0"/>
