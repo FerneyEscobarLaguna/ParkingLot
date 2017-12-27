@@ -17,7 +17,7 @@ public class Conection {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			con = DriverManager.getConnection("jdbc:sqlserver://mssql3.gear.host","parqueaderoceiba","Do4sjHrB!Dd~");
 		}catch(SQLException|ClassNotFoundException e){
-			LOGGER.log(LOGGER.getLevel(), e.toString());
+			e.printStackTrace();
 		}
 	}
 	

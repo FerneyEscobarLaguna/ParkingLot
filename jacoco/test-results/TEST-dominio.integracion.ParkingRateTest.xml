@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="dominio.integracion.ParkingRateTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2017-12-27T12:58:35" hostname="FERNEY-ESCOBAR" time="0.003">
+<testsuite name="dominio.integracion.ParkingRateTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2017-12-27T14:36:57" hostname="FERNEY-ESCOBAR" time="0.005">
   <properties/>
-  <testcase name="oobtenerTarifaHoraTest" classname="dominio.integracion.ParkingRateTest" time="0.002"/>
+  <testcase name="oobtenerTarifaHoraTest" classname="dominio.integracion.ParkingRateTest" time="0.003"/>
   <testcase name="oobtenerTarifaDiaTest" classname="dominio.integracion.ParkingRateTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
