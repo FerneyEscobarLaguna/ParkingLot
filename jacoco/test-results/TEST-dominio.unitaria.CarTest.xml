@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="dominio.unitaria.CarTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2017-12-27T16:55:00" hostname="FERNEY-ESCOBAR" time="0.002">
+<testsuite name="dominio.unitaria.CarTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2018-01-12T18:46:05" hostname="FERNEY-ESCOBAR" time="0.003">
   <properties/>
   <testcase name="getParkingCostTest" classname="dominio.unitaria.CarTest" time="0.001"/>
-  <testcase name="crearCarroVacioTest" classname="dominio.unitaria.CarTest" time="0.0"/>
-  <testcase name="modificarCarroTest" classname="dominio.unitaria.CarTest" time="0.001"/>
-  <testcase name="crearCarroTest" classname="dominio.unitaria.CarTest" time="0.0"/>
+  <testcase name="crearCarroVacioTest" classname="dominio.unitaria.CarTest" time="0.001"/>
+  <testcase name="modificarCarroTest" classname="dominio.unitaria.CarTest" time="0.0"/>
+  <testcase name="crearCarroTest" classname="dominio.unitaria.CarTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

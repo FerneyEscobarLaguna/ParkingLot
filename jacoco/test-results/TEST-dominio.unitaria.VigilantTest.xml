@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="dominio.unitaria.VigilantTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-12-27T16:55:04" hostname="FERNEY-ESCOBAR" time="0.01">
+<testsuite name="dominio.unitaria.VigilantTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-01-12T18:46:08" hostname="FERNEY-ESCOBAR" time="0.015">
   <properties/>
-  <testcase name="vehiculoParqueadoTest" classname="dominio.unitaria.VigilantTest" time="0.003"/>
-  <testcase name="registrarIngresoVehiculoCarroTest" classname="dominio.unitaria.VigilantTest" time="0.005"/>
-  <testcase name="registrarIngresoVehiculoMotoTest" classname="dominio.unitaria.VigilantTest" time="0.002"/>
+  <testcase name="vehiculoParqueadoTest" classname="dominio.unitaria.VigilantTest" time="0.0"/>
+  <testcase name="registrarIngresoVehiculoCarroTest" classname="dominio.unitaria.VigilantTest" time="0.0"/>
+  <testcase name="registrarIngresoVehiculoMotoTest" classname="dominio.unitaria.VigilantTest" time="0.015"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

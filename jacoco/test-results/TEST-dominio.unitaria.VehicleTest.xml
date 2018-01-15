@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="dominio.unitaria.VehicleTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-12-27T16:55:04" hostname="FERNEY-ESCOBAR" time="0.001">
+<testsuite name="dominio.unitaria.VehicleTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-01-12T18:46:08" hostname="FERNEY-ESCOBAR" time="0.0">
   <properties/>
   <testcase name="crearVehiculoTest" classname="dominio.unitaria.VehicleTest" time="0.0"/>
   <testcase name="crearVehiculoTestVacio" classname="dominio.unitaria.VehicleTest" time="0.0"/>
-  <testcase name="modificarVehiculoTest" classname="dominio.unitaria.VehicleTest" time="0.001"/>
+  <testcase name="modificarVehiculoTest" classname="dominio.unitaria.VehicleTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

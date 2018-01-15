@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="dominio.unitaria.ConectionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-12-27T16:55:00" hostname="FERNEY-ESCOBAR" time="4.371">
+<testsuite name="dominio.unitaria.ConectionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-01-12T18:46:05" hostname="FERNEY-ESCOBAR" time="3.935">
   <properties/>
-  <testcase name="executeQueryTest" classname="dominio.unitaria.ConectionTest" time="2.086"/>
-  <testcase name="conectTest" classname="dominio.unitaria.ConectionTest" time="0.951"/>
-  <testcase name="executeUpdateTest" classname="dominio.unitaria.ConectionTest" time="1.33"/>
+  <testcase name="executeQueryTest" classname="dominio.unitaria.ConectionTest" time="1.572"/>
+  <testcase name="conectTest" classname="dominio.unitaria.ConectionTest" time="1.08"/>
+  <testcase name="executeUpdateTest" classname="dominio.unitaria.ConectionTest" time="1.283"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
